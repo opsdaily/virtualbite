@@ -1486,6 +1486,7 @@ $("leadForm").addEventListener("submit", function(e){
   var demoWhen = DAYW[when.getDay()]+" "+when.toLocaleDateString("en-US",{month:"long",day:"numeric"})+" at "+selSlot+" Eastern";
   var pad2 = function(n){ return String(n).padStart(2,"0"); };
   var lead = {
+    id:crypto.randomUUID(),
     restaurant_name:rest, owner_name:own, email:em, phone:ph,
     city:$("fCity").value||null, pos_system:$("fPos").value,
     order_origin:"From calculator: "+money(m.sales)+"/mo across the apps",
@@ -1501,7 +1502,13 @@ $("leadForm").addEventListener("submit", function(e){
     ],
     notes:[{text:"Auto-captured from calculator: "+money(m.taken*12)+" a year taken by the apps at an effective "+(m.effRate*100).toFixed(1)+"% take rate.", who:"System"}]
   };
-  if(sb){ sb.from("leads").insert(lead).then(function(res){ if(res.error) console.error(res.error); }); }
+  if(sb){
+    sb.from("leads").insert(lead).then(function(res){
+      if(res.error){ console.error(res.error); return; }
+      sb.functions.invoke("send-confirmation", { body:{ record:lead } })
+        .catch(function(err){ console.error(err); });
+    });
+  }
   $("bookWrap").innerHTML =
     '<div class="glass strong confirm" style="grid-column:1/-1">'+
     '<div class="ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>'+
