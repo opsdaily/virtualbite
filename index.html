@@ -1484,6 +1484,7 @@ $("leadForm").addEventListener("submit", function(e){
   var when = dayList[selDay];
   var m = model();
   var demoWhen = DAYW[when.getDay()]+" "+when.toLocaleDateString("en-US",{month:"long",day:"numeric"})+" at "+selSlot+" Eastern";
+  var pad2 = function(n){ return String(n).padStart(2,"0"); };
   var lead = {
     restaurant_name:rest, owner_name:own, email:em, phone:ph,
     city:$("fCity").value||null, pos_system:$("fPos").value,
@@ -1492,6 +1493,8 @@ $("leadForm").addEventListener("submit", function(e){
     annual_revenue:(+iSales.value||0)*12, goal:"Reduce third-party commission",
     pain:$("fPain").value||null, marketing_spend:+iMkt.value||0, ad_spend:0,
     source:"Website demo form", status:"Demo Scheduled",
+    demo_date:when.getFullYear()+"-"+pad2(when.getMonth()+1)+"-"+pad2(when.getDate()),
+    demo_slot:selSlot, demo_label:demoWhen,
     timeline:[
       {text:"Demo booked for "+demoWhen, at:Date.now()},
       {text:"Lead submitted from booking form", at:Date.now()}
