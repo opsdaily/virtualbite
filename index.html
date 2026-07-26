@@ -997,8 +997,8 @@ function toast(msg){
    once the Supabase project exists. Both are safe to expose client-side —
    access is enforced by the RLS policies on the leads table, not by hiding
    these values.                                                          */
-var SUPABASE_URL = "YOUR_SUPABASE_URL";
-var SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+var SUPABASE_URL = "https://fwqnmbxybutcaupcbbvq.supabase.co";
+var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ3cW5tYnh5YnV0Y2F1cGNiYnZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUwNzg5MDksImV4cCI6MjEwMDY1NDkwOX0.ffjxPHiRDwTb8z1Es2V-bxApYuJgLU4ODm4o6YVr1bc";
 var sb = (window.supabase && SUPABASE_URL.indexOf("YOUR_") !== 0)
   ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
   : null;
