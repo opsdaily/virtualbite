@@ -131,7 +131,7 @@ p{margin:0}
 .viewtog button{padding:6px 12px;border-radius:var(--pill);font-size:.8125rem;font-weight:500;color:var(--ink-3);transition:.22s}
 .viewtog button.on{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(11,11,16,.16)}
 @media(max-width:1040px){.nav-mid{display:none}}
-@media(max-width:520px){.nav-end .btn{display:none}}
+@media(max-width:520px){.nav-end .btn:not(#staffLink){display:none}}
 
 /* ══ HERO ══ */
 .hero{padding-top:clamp(120px,15vw,168px);padding-bottom:var(--sec)}
@@ -408,6 +408,12 @@ body.admin .nav-mid{display:none}
 .tools input[type=search],.tools select{height:42px;padding:0 var(--s4);border-radius:var(--r1);
   background:rgba(255,255,255,.86);border:.5px solid rgba(11,11,16,.12);font-size:.9375rem}
 .tools input[type=search]{flex:1;min-width:180px}
+@media(max-width:620px){
+  .crm-hd{flex-direction:column;align-items:stretch}
+  .tools{margin-left:0!important;width:100%}
+  .tools input[type=search]{flex:1 1 100%}
+  .tools select,.tools button{flex:1}
+}
 .tbl-wrap{border-radius:var(--r3);overflow:hidden}
 .tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .ltbl{width:100%;min-width:520px;border-collapse:collapse;font-size:.875rem}
@@ -429,7 +435,7 @@ body.admin .nav-mid{display:none}
 .st-won{background:rgba(18,183,106,.15);color:#0A8A50}
 .st-lst{background:rgba(11,11,16,.07);color:#6A6A76}
 .hide-sm{display:table-cell}
-@media(max-width:820px){.hide-sm{display:none}}
+@media(max-width:820px){.hide-sm{display:none}.ltbl{min-width:0}}
 
 .sheet{position:fixed;inset:0;z-index:400;display:none}
 .sheet.open{display:block}
@@ -494,7 +500,7 @@ body.admin .nav-mid{display:none}
     <div>
       <span class="pill"><i></i> Restaurant technology &amp; growth · Toast partner</span>
       <h1>Stop renting<br>your <span class="grad">customers.</span></h1>
-      <p class="lede">Every marketplace order costs you up to 30% and hands your guest to someone else. We build the website, the app, the ordering and the marketing that bring those orders back in-house — and keep the customer list yours.</p>
+      <p class="lede">Every marketplace order costs you up to 30% and hands your guest to someone else. We build the website, the app, the ordering and the marketing that bring those orders back in-house — so the customer list stays yours.</p>
       <div class="cta">
         <a class="btn btn-coral" href="#calculator">See what you're losing</a>
         <a class="btn btn-glass" href="#demo">Book a demo</a>
@@ -905,7 +911,7 @@ body.admin .nav-mid{display:none}
         <div class="kcard glass"><div class="k">Total leads</div><div class="v" id="kTotal">&mdash;</div></div>
         <div class="kcard glass"><div class="k">New this week</div><div class="v" id="kWeek">&mdash;</div></div>
         <div class="kcard glass"><div class="k">Demos scheduled</div><div class="v" id="kDemos">&mdash;</div></div>
-        <div class="kcard glass"><div class="k">Pipeline value</div><div class="v" id="kPipeline">&mdash;</div></div>
+        <div class="kcard glass"><div class="k">Open sales volume</div><div class="v" id="kPipeline">&mdash;</div></div>
         <div class="kcard glass"><div class="k">Won</div><div class="v" id="kWon">&mdash;</div></div>
       </div>
 
