@@ -1505,7 +1505,7 @@ $("leadForm").addEventListener("submit", function(e){
   if(sb){
     sb.from("leads").insert(lead).then(function(res){
       if(res.error){ console.error(res.error); return; }
-      sb.functions.invoke("send-confirmation", { body:{ record:lead } })
+      sb.functions.invoke("dynamic-service", { body:{ record:lead } })
         .catch(function(err){ console.error(err); });
     });
   }
