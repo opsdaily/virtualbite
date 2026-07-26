@@ -877,35 +877,37 @@ body.admin .nav-mid{display:none}
   <div class="wrap">
     <a href="#" id="crmBack" class="tiny" style="display:inline-block;margin-bottom:var(--s5)">&larr; Back to site</a>
 
-    <div class="crm-hd">
-      <h2>Leads</h2>
-      <div class="tools" style="margin-left:auto">
-        <input type="search" id="crmSearch" placeholder="Search leads&hellip;">
-        <select id="crmStatus">
-          <option value="">All statuses</option>
-          <option>New</option><option>Contacted</option><option>Demo Scheduled</option>
-          <option>Discovery Call</option><option>Proposal Sent</option><option>Negotiating</option>
-          <option>Won</option><option>Lost</option>
-        </select>
-        <button class="btn btn-glass btn-sm" id="crmLogout" type="button" style="display:none">Log out</button>
+    <div id="crmGate" style="max-width:420px;margin:var(--s8) auto 0">
+      <div id="crmAuthNote" class="authnote glass">
+        <div class="authnote-ic"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></div>
+        <div><b>Staff sign-in required</b><span id="crmAuthMsg">Log in with your VirtualBite staff account to view leads.</span></div>
       </div>
-    </div>
 
-    <div id="crmAuthNote" class="authnote glass" style="display:none">
-      <div class="authnote-ic"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></div>
-      <div><b>Staff sign-in required</b><span id="crmAuthMsg">Log in with your VirtualBite staff account to view leads.</span></div>
+      <form id="crmLoginForm" class="glass strong panel" style="margin-top:var(--s5)" novalidate>
+        <h4 style="margin-bottom:var(--s5)">Staff sign in</h4>
+        <div class="inputs">
+          <div class="fld"><label for="crmEmail">Email</label><input type="email" id="crmEmail" required></div>
+          <div class="fld"><label for="crmPass">Password</label><input type="password" id="crmPass" required></div>
+        </div>
+        <button class="btn btn-coral btn-full" type="submit" style="margin-top:var(--s6)">Sign in</button>
+      </form>
     </div>
-
-    <form id="crmLoginForm" class="glass strong panel" style="max-width:420px;margin:0 auto var(--s7)" novalidate>
-      <h4 style="margin-bottom:var(--s5)">Staff sign in</h4>
-      <div class="inputs">
-        <div class="fld"><label for="crmEmail">Email</label><input type="email" id="crmEmail" required></div>
-        <div class="fld"><label for="crmPass">Password</label><input type="password" id="crmPass" required></div>
-      </div>
-      <button class="btn btn-coral btn-full" type="submit" style="margin-top:var(--s6)">Sign in</button>
-    </form>
 
     <div id="crmDash" style="display:none">
+      <div class="crm-hd">
+        <h2>Leads</h2>
+        <div class="tools" style="margin-left:auto">
+          <input type="search" id="crmSearch" placeholder="Search leads&hellip;">
+          <select id="crmStatus">
+            <option value="">All statuses</option>
+            <option>New</option><option>Contacted</option><option>Demo Scheduled</option>
+            <option>Discovery Call</option><option>Proposal Sent</option><option>Negotiating</option>
+            <option>Won</option><option>Lost</option>
+          </select>
+          <button class="btn btn-glass btn-sm" id="crmLogout" type="button">Log out</button>
+        </div>
+      </div>
+
       <div class="crm-kpi">
         <div class="kcard glass"><div class="k">Total leads</div><div class="v" id="kTotal">&mdash;</div></div>
         <div class="kcard glass"><div class="k">New this week</div><div class="v" id="kWeek">&mdash;</div></div>
@@ -1011,23 +1013,23 @@ var allLeads = [], activeLead = null;
 
 function esc(s){ return String(s==null?"—":s).replace(/[&<>]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c]; }); }
 
-function showAuthNote(msg){ $("crmAuthNote").style.display = "flex"; $("crmAuthMsg").textContent = msg; }
-
 function setAdminView(loggedIn){
-  $("crmLoginForm").style.display = loggedIn ? "none" : "block";
+  $("crmGate").style.display = loggedIn ? "none" : "block";
   $("crmDash").style.display = loggedIn ? "block" : "none";
-  $("crmAuthNote").style.display = loggedIn ? "none" : "flex";
-  $("crmLogout").style.display = loggedIn ? "" : "none";
+  if(loggedIn) loadLeads();
 }
 
 function enterAdmin(){
   document.body.classList.add("admin");
   window.scrollTo(0,0);
-  if(!sb){ setAdminView(false); showAuthNote("Dashboard isn't connected to a database yet."); return; }
+  if(!sb){
+    setAdminView(false);
+    $("crmAuthMsg").textContent = "Dashboard isn't connected to a database yet.";
+    $("crmLoginForm").style.display = "none";
+    return;
+  }
   sb.auth.getSession().then(function(res){
-    var session = res.data && res.data.session;
-    setAdminView(!!session);
-    if(session) loadLeads();
+    setAdminView(!!(res.data && res.data.session));
   });
 }
 
@@ -1042,7 +1044,7 @@ $("crmLoginForm").addEventListener("submit", function(e){
   var email = $("crmEmail").value.trim(), pass = $("crmPass").value;
   sb.auth.signInWithPassword({ email:email, password:pass }).then(function(res){
     if(res.error){ toast(res.error.message); return; }
-    setAdminView(true); loadLeads();
+    setAdminView(true);
   });
 });
 
