@@ -373,6 +373,8 @@ body.admin .stickybar{transform:translateY(110%);pointer-events:none}
 .slot:hover{border-color:var(--coral)}
 .slot.on{background:var(--coral);color:#fff;border-color:transparent}
 .slot.gone{opacity:.35;pointer-events:none;text-decoration:line-through}
+.slot.blocked{opacity:.6;text-decoration:line-through;background:rgba(229,72,77,.10);border-color:rgba(229,72,77,.3);color:var(--red)}
+.slot.booked{background:var(--ink);color:#fff;pointer-events:none}
 .confirm{padding:var(--s7) var(--s6);border-radius:var(--r4);text-align:center}
 .confirm .ok{width:56px;height:56px;border-radius:50%;margin:0 auto var(--s5);display:grid;place-items:center;
   background:rgba(18,183,106,.14)}
@@ -848,8 +850,23 @@ body.admin .nav-mid{display:none}
               <select id="fPos"><option>Toast</option><option>Square</option><option>Clover</option><option>Aloha</option><option>SpotOn</option><option>Other / not sure</option></select>
             </div>
           </div>
-          <div class="fld"><label for="fPain">What's the biggest problem right now?</label>
-            <textarea id="fPain" placeholder="Marketplace fees, no website, orders getting missed…"></textarea></div>
+          <div class="fld"><label for="fPain">What best describes where you're at?</label>
+            <select id="fPain">
+              <option value="">Choose one&hellip;</option>
+              <option>Marketplace fees are eating my margin</option>
+              <option>I don't have a website or online ordering</option>
+              <option>I'm missing orders or losing customers to competitors</option>
+              <option>I want repeat customers or a loyalty program</option>
+              <option>I'm not showing up on Google or social</option>
+              <option>Just exploring my options</option>
+              <option>Ready to get started, not sure what I need</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="fld" id="fPainOtherWrap" style="display:none">
+            <label for="fPainOther">Tell us more</label>
+            <input type="text" id="fPainOther" placeholder="What's on your mind?">
+          </div>
         </div>
         <button class="btn btn-coral btn-full" type="submit" style="margin-top:var(--s6)">Confirm my demo</button>
         <p class="tiny" style="margin-top:var(--s4)">We ask six questions here, not twenty. The rest we'll fill in on the call — long forms lose more restaurants than they qualify.</p>
@@ -897,8 +914,19 @@ body.admin .nav-mid{display:none}
 
     <div id="crmDash" style="display:none">
       <div class="crm-hd">
-        <h2>Leads</h2>
+        <h2 id="crmTitle">Leads</h2>
         <div class="tools" style="margin-left:auto">
+          <button class="btn btn-glass btn-sm" id="crmLogout" type="button">Log out</button>
+        </div>
+      </div>
+
+      <div class="viewtog" style="margin-bottom:var(--s5)">
+        <button type="button" class="on" data-crmview="leads">Leads</button>
+        <button type="button" data-crmview="availability">Availability</button>
+      </div>
+
+      <div id="crmLeadsView">
+        <div class="tools" style="margin-bottom:var(--s4)">
           <input type="search" id="crmSearch" placeholder="Search leads&hellip;">
           <select id="crmStatus">
             <option value="">All statuses</option>
@@ -906,27 +934,38 @@ body.admin .nav-mid{display:none}
             <option>Discovery Call</option><option>Proposal Sent</option><option>Negotiating</option>
             <option>Won</option><option>Lost</option>
           </select>
-          <button class="btn btn-glass btn-sm" id="crmLogout" type="button">Log out</button>
+        </div>
+
+        <div class="crm-kpi">
+          <div class="kcard glass"><div class="k">Total leads</div><div class="v" id="kTotal">&mdash;</div></div>
+          <div class="kcard glass"><div class="k">New this week</div><div class="v" id="kWeek">&mdash;</div></div>
+          <div class="kcard glass"><div class="k">Demos scheduled</div><div class="v" id="kDemos">&mdash;</div></div>
+          <div class="kcard glass"><div class="k">Open sales volume</div><div class="v" id="kPipeline">&mdash;</div></div>
+          <div class="kcard glass"><div class="k">Won</div><div class="v" id="kWon">&mdash;</div></div>
+        </div>
+
+        <div class="tbl-wrap glass">
+          <div class="tbl-scroll">
+            <table class="ltbl">
+              <thead><tr>
+                <th>Restaurant</th><th class="hide-sm">Contact</th><th>Status</th>
+                <th class="hide-sm">Source</th><th class="hide-sm">Value</th><th>Received</th>
+              </tr></thead>
+              <tbody id="crmRows"></tbody>
+            </table>
+          </div>
         </div>
       </div>
 
-      <div class="crm-kpi">
-        <div class="kcard glass"><div class="k">Total leads</div><div class="v" id="kTotal">&mdash;</div></div>
-        <div class="kcard glass"><div class="k">New this week</div><div class="v" id="kWeek">&mdash;</div></div>
-        <div class="kcard glass"><div class="k">Demos scheduled</div><div class="v" id="kDemos">&mdash;</div></div>
-        <div class="kcard glass"><div class="k">Open sales volume</div><div class="v" id="kPipeline">&mdash;</div></div>
-        <div class="kcard glass"><div class="k">Won</div><div class="v" id="kWon">&mdash;</div></div>
-      </div>
-
-      <div class="tbl-wrap glass">
-        <div class="tbl-scroll">
-          <table class="ltbl">
-            <thead><tr>
-              <th>Restaurant</th><th class="hide-sm">Contact</th><th>Status</th>
-              <th class="hide-sm">Source</th><th class="hide-sm">Value</th><th>Received</th>
-            </tr></thead>
-            <tbody id="crmRows"></tbody>
-          </table>
+      <div id="crmAvailView" style="display:none">
+        <div class="glass strong panel" style="max-width:640px;margin:0 auto">
+          <div class="tools" style="margin-bottom:var(--s5)">
+            <button class="btn btn-glass btn-xs" id="availPrev" type="button">&larr; Prev week</button>
+            <button class="btn btn-glass btn-xs" id="availNext" type="button" style="margin-left:auto">Next week &rarr;</button>
+          </div>
+          <div class="days" id="availDays"></div>
+          <div class="slots" id="availSlots"></div>
+          <p class="tiny" style="margin-top:var(--s5)">Click an open slot to block it, or a blocked slot to open it back up. Slots already booked by a lead show dark and can't be changed here.</p>
         </div>
       </div>
     </div>
@@ -1031,6 +1070,67 @@ function enterAdmin(){
 }
 
 function exitAdmin(){ document.body.classList.remove("admin"); closeSheet(); }
+
+document.querySelectorAll('[data-crmview]').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('[data-crmview]').forEach(function(x){ x.classList.toggle('on', x===b); });
+    var view = b.getAttribute('data-crmview');
+    $("crmTitle").textContent = view === "leads" ? "Leads" : "Availability";
+    $("crmLeadsView").style.display = view === "leads" ? "block" : "none";
+    $("crmAvailView").style.display = view === "availability" ? "block" : "none";
+    if(view === "availability") loadAvailAdmin();
+  });
+});
+
+var availOffset=0, availSelDay=0, availDayList=[], availTaken={};
+
+function refreshAvailDayPicker(){
+  renderDayPicker($("availDays"), availDayList, availSelDay, function(i){ availSelDay=i; refreshAvailDayPicker(); renderAvailSlots(); });
+}
+
+function loadAvailAdmin(){
+  availDayList = buildDayList(availOffset);
+  availSelDay = 0;
+  refreshAvailDayPicker();
+  sb.from("demo_slots").select("slot_date,slot_time,status").in("slot_date", availDayList.map(isoDate)).then(function(res){
+    if(res.error){ toast(res.error.message); return; }
+    availTaken = {};
+    (res.data||[]).forEach(function(r){ availTaken[r.slot_date+"|"+r.slot_time] = r.status; });
+    renderAvailSlots();
+  });
+}
+
+function renderAvailSlots(){
+  var day = availDayList[availSelDay];
+  $("availSlots").innerHTML = SLOTS.map(function(s){
+    var status = availTaken[isoDate(day)+"|"+s];
+    var cls = status === "booked" ? " booked" : status === "blocked" ? " blocked" : "";
+    var label = s + (status ? " &middot; "+status : "");
+    return '<button class="slot'+cls+'" type="button" data-slot="'+s+'">'+label+'</button>';
+  }).join("");
+  [].slice.call($("availSlots").children).forEach(function(b){
+    b.onclick = function(){
+      var s = b.getAttribute("data-slot");
+      var day = availDayList[availSelDay];
+      var status = availTaken[isoDate(day)+"|"+s];
+      if(status === "booked") return;
+      if(status === "blocked"){
+        sb.from("demo_slots").delete().eq("slot_date", isoDate(day)).eq("slot_time", s).eq("status","blocked").then(function(res){
+          if(res.error){ toast(res.error.message); return; }
+          loadAvailAdmin();
+        });
+      } else {
+        sb.from("demo_slots").insert({slot_date:isoDate(day), slot_time:s, status:"blocked"}).then(function(res){
+          if(res.error){ toast(res.error.message); return; }
+          loadAvailAdmin();
+        });
+      }
+    };
+  });
+}
+
+$("availPrev").addEventListener("click", function(){ availOffset = Math.max(0, availOffset-7); loadAvailAdmin(); });
+$("availNext").addEventListener("click", function(){ availOffset += 7; loadAvailAdmin(); });
 
 $("staffLink").addEventListener("click", function(e){ e.preventDefault(); enterAdmin(); });
 $("crmBack").addEventListener("click", function(e){ e.preventDefault(); exitAdmin(); });
@@ -1446,36 +1546,77 @@ $("quotes").innerHTML = qs.map(function(q){
 var DAYW=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 var SLOTS=["9:00 AM","10:00 AM","11:00 AM","1:00 PM","2:00 PM","3:00 PM","4:00 PM","5:00 PM","6:00 PM"];
 var selDay=0, selSlot=null, dayList=[];
-(function(){
-  var d = new Date(); var added=0;
-  while(dayList.length<7){
+var takenSlots={};
+
+function isoDate(d){ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+
+function parseSlot(slot){
+  var m = /^(\d+):(\d+)\s*(AM|PM)$/i.exec(slot);
+  var h = parseInt(m[1],10), min = parseInt(m[2],10), ap = m[3].toUpperCase();
+  if(ap==="PM" && h!==12) h+=12;
+  if(ap==="AM" && h===12) h=0;
+  return {h:h,min:min};
+}
+
+function slotIsPast(day, slot){
+  var now = new Date();
+  if(isoDate(day) !== isoDate(now)) return false;
+  var t = parseSlot(slot);
+  var slotDate = new Date(day); slotDate.setHours(t.h,t.min,0,0);
+  return slotDate.getTime() <= now.getTime();
+}
+
+function buildDayList(offsetDays){
+  var list = [], d = new Date(), added = offsetDays||0;
+  while(list.length<7){
     added++; var n = new Date(d.getTime()+added*864e5);
-    if(n.getDay()!==0) dayList.push(n);
+    if(n.getDay()!==0) list.push(n);
   }
-  $("days").innerHTML = dayList.map(function(n,i){
-    return '<button class="day'+(i?"":" on")+'" type="button"><span class="dw">'+DAYW[n.getDay()]+
+  return list;
+}
+
+function renderDayPicker(container, list, selectedIndex, onSelect){
+  container.innerHTML = list.map(function(n,i){
+    return '<button class="day'+(i===selectedIndex?" on":"")+'" type="button"><span class="dw">'+DAYW[n.getDay()]+
       '</span><span class="dd">'+n.getDate()+'</span></button>';
   }).join("");
-  [].slice.call($("days").children).forEach(function(b,i){
-    b.onclick = function(){
-      selDay=i; selSlot=null;
-      [].slice.call($("days").children).forEach(function(x,j){ x.classList.toggle("on", i===j); });
-      renderSlots();
-    };
+  [].slice.call(container.children).forEach(function(b,i){
+    b.onclick = function(){ onSelect(i); };
   });
-})();
+}
+
+dayList = buildDayList(0);
+function refreshDayPicker(){
+  renderDayPicker($("days"), dayList, selDay, function(i){ selDay=i; selSlot=null; refreshDayPicker(); renderSlots(); });
+}
+refreshDayPicker();
+
+function loadAvailability(){
+  if(!sb){ renderSlots(); return; }
+  sb.from("demo_slots").select("slot_date,slot_time").in("slot_date", dayList.map(isoDate)).then(function(res){
+    takenSlots = {};
+    (res.data||[]).forEach(function(r){ takenSlots[r.slot_date+"|"+r.slot_time] = true; });
+    renderSlots();
+  });
+}
+
 function renderSlots(){
-  $("slots").innerHTML = SLOTS.map(function(s,i){
-    var gone = (selDay*3+i) % 7 === 0;
+  var day = dayList[selDay];
+  $("slots").innerHTML = SLOTS.map(function(s){
+    var gone = !!takenSlots[isoDate(day)+"|"+s] || slotIsPast(day, s);
     return '<button class="slot'+(gone?" gone":"")+(selSlot===s?" on":"")+'" type="button"'+(gone?' disabled':'')+'>'+s+'</button>';
   }).join("");
   [].slice.call($("slots").children).forEach(function(b){
     b.onclick = function(){ selSlot = b.textContent; renderSlots(); };
   });
 }
-renderSlots();
+loadAvailability();
 
 /* ───── form → CRM ───── */
+$("fPain").addEventListener("change", function(){
+  $("fPainOtherWrap").style.display = this.value === "Other" ? "block" : "none";
+});
+
 $("leadForm").addEventListener("submit", function(e){
   e.preventDefault();
   var rest=$("fRest").value.trim(), own=$("fOwner").value.trim(), em=$("fEmail").value.trim(), ph=$("fPhone").value.trim();
@@ -1484,7 +1625,9 @@ $("leadForm").addEventListener("submit", function(e){
   var when = dayList[selDay];
   var m = model();
   var demoWhen = DAYW[when.getDay()]+" "+when.toLocaleDateString("en-US",{month:"long",day:"numeric"})+" at "+selSlot+" Eastern";
-  var pad2 = function(n){ return String(n).padStart(2,"0"); };
+  var demoDate = isoDate(when);
+  var painSel = $("fPain").value;
+  var pain = painSel === "Other" ? ($("fPainOther").value.trim()||null) : (painSel||null);
   var lead = {
     id:crypto.randomUUID(),
     restaurant_name:rest, owner_name:own, email:em, phone:ph,
@@ -1492,35 +1635,46 @@ $("leadForm").addEventListener("submit", function(e){
     order_origin:"From calculator: "+money(m.sales)+"/mo across the apps",
     monthly_orders:Math.round(m.orders), avg_ticket:Math.round(m.ticket), locations:1,
     annual_revenue:(+iSales.value||0)*12, goal:"Reduce third-party commission",
-    pain:$("fPain").value||null, marketing_spend:+iMkt.value||0, ad_spend:0,
+    pain:pain, marketing_spend:+iMkt.value||0, ad_spend:0,
     source:"Website demo form", status:"Demo Scheduled",
-    demo_date:when.getFullYear()+"-"+pad2(when.getMonth()+1)+"-"+pad2(when.getDate()),
-    demo_slot:selSlot, demo_label:demoWhen,
+    demo_date:demoDate, demo_slot:selSlot, demo_label:demoWhen,
     timeline:[
       {text:"Demo booked for "+demoWhen, at:Date.now()},
       {text:"Lead submitted from booking form", at:Date.now()}
     ],
     notes:[{text:"Auto-captured from calculator: "+money(m.taken*12)+" a year taken by the apps at an effective "+(m.effRate*100).toFixed(1)+"% take rate.", who:"System"}]
   };
-  if(sb){
-    sb.from("leads").insert(lead).then(function(res){
-      if(res.error){ console.error(res.error); return; }
+
+  function showConfirmation(){
+    $("bookWrap").innerHTML =
+      '<div class="glass strong confirm" style="grid-column:1/-1">'+
+      '<div class="ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>'+
+      '<h3>You\'re booked, '+own.split(" ")[0]+'.</h3>'+
+      '<p class="lede" style="margin:var(--s4) auto 0;max-width:40ch">'+demoWhen+', 30 minutes, video call.</p>'+
+      '<ul class="nextsteps">'+
+        '<li><b>1</b><span>Confirmation email and calendar invite are on their way to '+em+'.</span></li>'+
+        '<li><b>2</b><span>We\'ll audit '+rest+'\'s site, Google listing and marketplace mix before we meet.</span></li>'+
+        '<li><b>3</b><span>You\'ll leave the call with a written number, whether or not you work with us.</span></li>'+
+      '</ul>'+
+      '<p class="tiny" style="margin-top:var(--s6)">A copy of the invite is on its way to your inbox.</p></div>';
+    toast("Demo booked");
+  }
+
+  if(!sb){ showConfirmation(); return; }
+
+  sb.from("demo_slots").insert({slot_date:demoDate, slot_time:selSlot, status:"booked", lead_id:lead.id}).then(function(res){
+    if(res.error){
+      toast("That time was just taken — pick another");
+      loadAvailability();
+      return;
+    }
+    sb.from("leads").insert(lead).then(function(res2){
+      if(res2.error){ console.error(res2.error); return; }
       sb.functions.invoke("dynamic-service", { body:{ record:lead } })
         .catch(function(err){ console.error(err); });
     });
-  }
-  $("bookWrap").innerHTML =
-    '<div class="glass strong confirm" style="grid-column:1/-1">'+
-    '<div class="ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>'+
-    '<h3>You\'re booked, '+own.split(" ")[0]+'.</h3>'+
-    '<p class="lede" style="margin:var(--s4) auto 0;max-width:40ch">'+DAYW[when.getDay()]+' '+when.toLocaleDateString("en-US",{month:"long",day:"numeric"})+' at '+selSlot+' Eastern, 30 minutes, video call.</p>'+
-    '<ul class="nextsteps">'+
-      '<li><b>1</b><span>Confirmation email and calendar invite are on their way to '+em+'.</span></li>'+
-      '<li><b>2</b><span>We\'ll audit '+rest+'\'s site, Google listing and marketplace mix before we meet.</span></li>'+
-      '<li><b>3</b><span>You\'ll leave the call with a written number, whether or not you work with us.</span></li>'+
-    '</ul>'+
-    '<p class="tiny" style="margin-top:var(--s6)">A copy of the invite is on its way to your inbox.</p></div>';
-  toast("Demo booked");
+    showConfirmation();
+  });
 });
 
 /* ───── reveal ───── */
