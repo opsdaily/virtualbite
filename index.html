@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>VirtualBite Partners — Stop renting your customers.</title>
+<meta name="description" content="VirtualBite Partners builds restaurant websites, apps, ordering, loyalty and marketing so restaurants own their customers instead of renting them from DoorDash, Uber Eats and Grubhub. Toast partner." />
+<meta name="theme-color" content="#FDFCFB" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="VirtualBite Partners — Stop renting your customers." />
+<meta property="og:description" content="Own your orders. Cut third-party commission. Grow direct revenue." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0B10; --ink-2:#3E3E4A; --ink-3:#7A7A88;
+  --coral:#FF4A17; --amber:#FFA92E; --lilac:#8B6CFF; --sky:#4FA8FF; --mint:#12B76A; --red:#E5484D;
+  --paper:#FDFCFB;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:64px;--s9:88px;
+  --sec:clamp(80px,9vw,132px); --gut:clamp(18px,4vw,32px);
+  --r1:12px;--r2:18px;--r3:26px;--r4:34px;--r5:44px;--pill:980px;
+  --g-fill:linear-gradient(155deg,rgba(255,255,255,.76),rgba(255,255,255,.55));
+  --g-strong:linear-gradient(155deg,rgba(255,255,255,.92),rgba(255,255,255,.74));
+  --g-dim:linear-gradient(155deg,rgba(255,255,255,.58),rgba(255,255,255,.34));
+  --rim:rgba(255,255,255,.80);
+  --spec:inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(255,255,255,.42);
+  --cast:0 2px 4px rgba(20,16,40,.03),0 12px 28px -8px rgba(20,16,40,.10),0 40px 80px -32px rgba(20,16,40,.16);
+  --cast-lift:0 4px 8px rgba(20,16,40,.04),0 20px 44px -10px rgba(20,16,40,.15),0 60px 110px -40px rgba(20,16,40,.22);
+  --f:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter Tight","Helvetica Neue",Arial,sans-serif;
+  --e:cubic-bezier(.22,.68,.32,1); --maxw:1200px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;color:var(--ink);background:var(--paper);font-family:var(--f);font-size:17px;line-height:1.5;
+  letter-spacing:-.014em;-webkit-font-smoothing:antialiased;overflow-x:clip;width:100%;max-width:100%}
+img,svg,table,iframe{max-width:100%}
+svg{display:block}a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul,ol{margin:0;padding:0;list-style:none}
+input,select,textarea{font:inherit;color:inherit;max-width:100%}
+:focus-visible{outline:2.5px solid var(--coral);outline-offset:3px;border-radius:8px}
+/* visually hidden until focused — never offset off-canvas, which is what let the page scroll sideways */
+.skip{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip:focus{position:fixed;top:0;left:0;width:auto;height:auto;clip-path:none;z-index:500;
+  background:var(--ink);color:#fff;padding:var(--s3) var(--s5);border-radius:0 0 var(--r2) 0}
+
+.field{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(253,252,251,.05) 0%,rgba(253,252,251,.60) 36%,rgba(253,252,251,.86) 64%,rgba(253,252,251,.74) 100%),
+    radial-gradient(58vw 52vw at 88% -10%, rgba(255,169,46,.44), transparent 62%),
+    radial-gradient(54vw 48vw at -8% 8%,  rgba(255,74,23,.34),  transparent 62%),
+    radial-gradient(52vw 48vw at 98% 54%, rgba(139,108,255,.30),transparent 62%),
+    radial-gradient(48vw 44vw at 8% 92%,  rgba(79,168,255,.26), transparent 62%),
+    var(--paper)}
+
+.glass{position:relative;background:var(--g-fill);border:.5px solid var(--rim);
+  box-shadow:var(--spec),var(--cast);border-radius:var(--r4)}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.9) 0%,rgba(255,255,255,.24) 20%,rgba(255,255,255,0) 44%)}
+.glass>*{position:relative}
+.strong{background:var(--g-strong)} .dim{background:var(--g-dim)}
+.live{-webkit-backdrop-filter:saturate(175%) blur(18px);backdrop-filter:saturate(175%) blur(18px)}
+@media(max-width:900px){.live{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(255,255,255,.94)}}
+.lift{transition:transform .4s var(--e),box-shadow .4s var(--e),background .4s var(--e)}
+@media(hover:hover){.lift:hover{transform:translateY(-6px);box-shadow:var(--spec),var(--cast-lift);background:var(--g-strong)}}
+
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+.sec{padding-block:var(--sec);position:relative}
+h1,h2,h3,h4{margin:0;font-weight:700;letter-spacing:-.045em;line-height:1.03}
+h1{font-size:clamp(2.7rem,7.4vw,5.4rem);letter-spacing:-.056em;line-height:.96}
+h2{font-size:clamp(2.1rem,5vw,3.6rem);letter-spacing:-.052em}
+h3{font-size:clamp(1.3rem,2.3vw,1.7rem);letter-spacing:-.038em}
+h4{font-size:1.0625rem;font-weight:600;letter-spacing:-.028em;line-height:1.25}
+p{margin:0}
+.lede{font-size:clamp(1.0625rem,1.6vw,1.25rem);line-height:1.47;color:var(--ink-2);letter-spacing:-.02em}
+.small{font-size:.9375rem;line-height:1.5;color:var(--ink-2);letter-spacing:-.012em}
+.tiny{font-size:.8125rem;color:var(--ink-3);letter-spacing:-.008em;line-height:1.45}
+.tn{font-variant-numeric:tabular-nums}
+.grad{background:linear-gradient(104deg,var(--coral),var(--amber) 48%,var(--lilac));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.head{max-width:720px;margin:0 auto var(--s8);text-align:center}
+.head h2{margin-block:var(--s4) var(--s5)}
+.head .lede{margin-inline:auto;max-width:54ch}
+.pill{display:inline-flex;align-items:center;gap:var(--s2);height:32px;padding:0 var(--s4);border-radius:var(--pill);
+  background:var(--g-strong);border:.5px solid var(--rim);box-shadow:var(--spec),0 2px 10px rgba(20,16,40,.06);
+  font-size:.8125rem;font-weight:500}
+.pill i{width:6px;height:6px;border-radius:50%;background:var(--coral);display:block;flex:none}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--s2);height:52px;padding:0 var(--s6);
+  border-radius:var(--pill);font-size:1.0625rem;font-weight:500;letter-spacing:-.02em;white-space:nowrap;
+  transition:transform .3s var(--e),box-shadow .3s var(--e),background .3s var(--e)}
+.btn:active{transform:scale(.98)}
+.btn-dark{background:var(--ink);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 8px 24px -8px rgba(11,11,16,.5)}
+.btn-coral{background:linear-gradient(140deg,#FF6A2E,var(--coral));color:#fff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.32),0 8px 24px -8px rgba(255,74,23,.6)}
+.btn-glass{background:var(--g-strong);color:var(--ink);border:.5px solid var(--rim);box-shadow:var(--spec),var(--cast)}
+@media(hover:hover){.btn-dark:hover,.btn-coral:hover,.btn-glass:hover{transform:translateY(-2px)}}
+.btn-sm{height:42px;padding:0 var(--s5);font-size:.9375rem}
+.btn-xs{height:34px;padding:0 var(--s4);font-size:.8125rem;border-radius:var(--r1)}
+.btn-full{width:100%}
+@media(max-width:620px){
+  .btn{white-space:normal;height:auto;min-height:52px;padding-block:var(--s3);line-height:1.3;text-align:center;max-width:100%}
+  .btn-sm{min-height:42px}
+}
+.cta{display:flex;gap:var(--s3);flex-wrap:wrap}.head .cta{justify-content:center}
+
+/* nav */
+.nav{position:fixed;top:var(--s3);left:0;right:0;z-index:300;display:flex;justify-content:center;padding-inline:var(--gut)}
+.nav-bar{display:flex;align-items:center;gap:var(--s3);height:56px;padding:0 var(--s2) 0 var(--s5);width:100%;max-width:var(--maxw);
+  border-radius:var(--pill);background:var(--g-strong);border:.5px solid var(--rim);box-shadow:var(--spec),var(--cast)}
+.logo{display:flex;align-items:center;gap:var(--s2);font-size:1rem;font-weight:600;letter-spacing:-.038em}
+.logo .m{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:none;
+  background:linear-gradient(140deg,var(--coral),var(--amber));box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 3px 8px -2px rgba(255,74,23,.55)}
+.logo .m svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2.6;stroke-linecap:round}
+.nav-mid{display:flex;gap:2px;margin-left:var(--s6)}
+.nav-mid a{padding:var(--s2) var(--s3);border-radius:var(--pill);font-size:.9rem;color:var(--ink-2);transition:.2s}
+.nav-mid a:hover{color:var(--ink);background:rgba(255,255,255,.75)}
+.nav-end{margin-left:auto;display:flex;align-items:center;gap:var(--s2)}
+.stafflink{font-size:.8125rem;color:var(--ink-3);opacity:.7;transition:.2s}
+.stafflink:hover{color:var(--ink);opacity:1}
+.authnote{display:flex;align-items:flex-start;gap:var(--s4);flex-wrap:wrap;margin-bottom:var(--s6);
+  padding:var(--s5);border-radius:var(--r2);background:rgba(229,72,77,.08);border:.5px solid rgba(229,72,77,.28)}
+.authnote-ic{width:34px;height:34px;border-radius:10px;flex:none;display:grid;place-items:center;
+  background:rgba(229,72,77,.14);color:var(--red)}
+.authnote-ic svg{width:17px;height:17px}
+.authnote>div:nth-child(2){flex:1;min-width:220px}
+.authnote b{display:block;font-size:.9375rem;letter-spacing:-.02em}
+.authnote span{display:block;font-size:.8125rem;color:var(--ink-2);margin-top:4px;line-height:1.45;max-width:70ch}
+.authnote .btn{flex:none}
+@media(max-width:620px){.authnote .btn{width:100%}}
+.viewtog{display:flex;gap:2px;padding:3px;border-radius:var(--pill);background:rgba(11,11,16,.06)}
+.viewtog button{padding:6px 12px;border-radius:var(--pill);font-size:.8125rem;font-weight:500;color:var(--ink-3);transition:.22s}
+.viewtog button.on{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(11,11,16,.16)}
+@media(max-width:1040px){.nav-mid{display:none}}
+@media(max-width:520px){.nav-end .btn{display:none}}
+
+/* ══ HERO ══ */
+.hero{padding-top:clamp(120px,15vw,168px);padding-bottom:var(--sec)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:clamp(32px,5vw,60px);align-items:center}
+.hero h1{margin-block:var(--s5)}
+.hero .lede{max-width:44ch}
+.hero .cta{margin-top:var(--s6)}
+.hero-fine{display:flex;gap:var(--s3) var(--s6);flex-wrap:wrap;margin-top:var(--s6)}
+.hero-fine span{display:inline-flex;align-items:center;gap:var(--s2);font-size:.875rem;color:var(--ink-2)}
+.hero-fine i{width:16px;height:16px;border-radius:50%;background:rgba(255,74,23,.14);display:grid;place-items:center;flex:none}
+.hero-fine i::after{content:"";width:7px;height:5px;border-left:1.6px solid var(--coral);border-bottom:1.6px solid var(--coral);
+  transform:rotate(-45deg) translate(1px,-1px)}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:var(--s8)}}
+
+/* calculator */
+.calc{padding:var(--s6);border-radius:var(--r4)}
+.calc-hd{display:flex;align-items:center;gap:var(--s3);margin-bottom:var(--s5)}
+.calc-hd h4{font-size:1rem}
+.calc-hd .badge{margin-left:auto;font-size:.6875rem;font-weight:600;color:var(--coral);
+  background:rgba(255,74,23,.10);padding:4px 9px;border-radius:var(--pill)}
+.row{margin-bottom:var(--s5)}
+.prow{margin-bottom:var(--s5)}
+.prow select{width:100%;height:36px;margin-top:var(--s3);padding:0 var(--s3);border-radius:var(--r1);
+  font-size:.8125rem;background:rgba(255,255,255,.8);border:.5px solid rgba(11,11,16,.12);
+  -webkit-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A7A88' stroke-width='2.4' stroke-linecap='round'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat:no-repeat;background-position:right 10px center;background-size:14px;padding-right:30px}
+.receipt{margin-top:var(--s6);padding-top:var(--s5);border-top:.5px solid rgba(11,11,16,.10)}
+.runits{display:flex;align-items:center;gap:var(--s3);margin-bottom:var(--s4)}
+.runits .rlbl{font-size:.75rem;color:var(--ink-3)}
+.unitseg{margin-left:auto;display:flex;gap:2px;padding:3px;border-radius:var(--pill);background:rgba(11,11,16,.06)}
+.unitseg button{padding:5px 12px;border-radius:var(--pill);font-size:.75rem;font-weight:600;color:var(--ink-3);transition:.22s}
+.unitseg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(11,11,16,.16)}
+.rline{display:flex;align-items:baseline;gap:var(--s3);padding:6px 0;font-size:.875rem;color:var(--ink-2)}
+.rline b{margin-left:auto;font-weight:600;color:var(--ink)}
+.rline.neg b{color:var(--red)}
+.rline.tot{margin-top:var(--s2);padding-top:var(--s3);border-top:.5px solid rgba(11,11,16,.10);
+  font-weight:600;color:var(--ink)}
+.rline.tot b{color:var(--mint)}
+.row .rl{display:flex;align-items:baseline;font-size:.875rem;color:var(--ink-2);margin-bottom:var(--s2)}
+.prow .rl{display:flex;align-items:baseline;font-size:.875rem;color:var(--ink-2);margin-bottom:var(--s2)}
+.row .rv,.prow .rv{margin-left:auto;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:99px;
+  background:rgba(11,11,16,.10);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;
+  background:#fff;border:.5px solid rgba(11,11,16,.14);box-shadow:0 2px 8px rgba(11,11,16,.24);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:none;
+  box-shadow:0 2px 8px rgba(11,11,16,.24);cursor:pointer}
+.result{margin-top:var(--s6);padding-top:var(--s5);border-top:.5px solid rgba(11,11,16,.10)}
+.result .rk{font-size:.8125rem;color:var(--ink-3)}
+.result .big{font-size:clamp(2.4rem,5.6vw,3.4rem);font-weight:700;letter-spacing:-.06em;line-height:1;margin-top:var(--s2);
+  font-variant-numeric:tabular-nums;color:var(--red)}
+.result .sub{font-size:.8125rem;color:var(--ink-3);margin-top:var(--s3)}
+
+/* stats strip */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s5);padding:var(--s6) var(--s7);border-radius:var(--r4)}
+.strip .v{font-size:1.5rem;font-weight:700;letter-spacing:-.05em;line-height:1.1}
+.strip .l{font-size:.8125rem;color:var(--ink-3);margin-top:var(--s2);line-height:1.4}
+@media(max-width:820px){.strip{grid-template-columns:1fr 1fr;padding:var(--s6)}}
+
+/* full ROI */
+.roi{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:var(--s6);align-items:stretch}
+@media(max-width:980px){.roi{grid-template-columns:1fr}}
+.panel{padding:var(--s7) var(--s6);border-radius:var(--r4)}
+.inputs{display:grid;gap:var(--s5)}
+.fld label{display:block;font-size:.8125rem;color:var(--ink-3);margin-bottom:var(--s2)}
+.fld input[type=number],.fld input[type=text],.fld input[type=email],.fld input[type=tel],.fld select,.fld textarea{
+  width:100%;height:46px;padding:0 var(--s4);border-radius:var(--r1);background:rgba(255,255,255,.86);
+  border:.5px solid rgba(11,11,16,.12);box-shadow:inset 0 1px 2px rgba(11,11,16,.04);transition:border-color .2s}
+.fld textarea{height:auto;padding:var(--s3) var(--s4);min-height:84px;resize:vertical;line-height:1.5}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--coral)}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4)}
+@media(max-width:600px){.f2{grid-template-columns:1fr}}
+.outs{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);margin-bottom:var(--s6)}
+.out{padding:var(--s5);border-radius:var(--r2);background:rgba(255,255,255,.7);border:.5px solid var(--rim);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
+.out .k{font-size:.75rem;color:var(--ink-3)}
+.out .v{font-size:1.6rem;font-weight:700;letter-spacing:-.055em;margin-top:var(--s2);font-variant-numeric:tabular-nums;line-height:1.1}
+.out.bad .v{color:var(--red)} .out.good .v{color:var(--mint)}
+.bars{display:flex;flex-direction:column;gap:var(--s5);margin-top:var(--s5)}
+.bar .bl{display:flex;font-size:.8125rem;color:var(--ink-2);margin-bottom:8px}
+.bar .bl b{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--ink)}
+.split{display:flex;height:34px;border-radius:10px;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+.split i{display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:600;color:#fff;
+  font-variant-numeric:tabular-nums;transition:width .5s var(--e);white-space:nowrap;overflow:hidden}
+.dependence{display:flex;align-items:baseline;gap:var(--s3);padding:var(--s4) 0;margin-bottom:var(--s5);
+  border-bottom:.5px solid rgba(11,11,16,.10)}
+.dependence .n{font-size:1.9rem;font-weight:700;letter-spacing:-.055em;line-height:1;font-variant-numeric:tabular-nums}
+.dependence .t{font-size:.8125rem;color:var(--ink-2);line-height:1.35}
+.assume{margin-top:var(--s5);padding-top:var(--s4);border-top:.5px solid rgba(11,11,16,.10)}
+.assume summary{font-size:.8125rem;color:var(--ink-3);cursor:pointer;list-style:none}
+.assume summary::-webkit-details-marker{display:none}
+.assume summary::before{content:"▸ ";transition:.2s}
+.assume[open] summary::before{content:"▾ "}
+.assume li{font-size:.8125rem;color:var(--ink-3);padding:5px 0 5px 14px;position:relative;line-height:1.45}
+.assume li::before{content:"—";position:absolute;left:0}
+.assume ul{margin-top:var(--s3)}
+.proj{margin-top:var(--s6);padding-top:var(--s5);border-top:.5px solid rgba(11,11,16,.10)}
+.proj svg{width:100%;height:120px}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4)}
+.svc-col{padding:var(--s6);border-radius:var(--r3)}
+.svc-col h4{margin-bottom:var(--s4);display:flex;align-items:center;gap:var(--s3)}
+.svc-col h4 span{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;flex:none;
+  background:linear-gradient(140deg,rgba(255,255,255,.95),rgba(255,255,255,.5));border:.5px solid var(--rim)}
+.svc-col h4 svg{width:16px;height:16px;stroke:var(--coral);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.svc-col li{font-size:.875rem;color:var(--ink-2);padding:7px 0;border-top:.5px solid rgba(11,11,16,.07)}
+.svc-col li:first-of-type{border-top:0}
+@media(max-width:980px){.svc{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.svc{grid-template-columns:1fr}}
+
+/* comparison */
+.cmp{border-radius:var(--r4);overflow:hidden}
+.cmp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.cmp table{width:100%;min-width:460px;border-collapse:collapse}
+.cmp th,.cmp td{padding:var(--s4) var(--s5);text-align:left;font-size:.9375rem}
+.cmp thead th{font-size:.8125rem;color:var(--ink-3);font-weight:500;border-bottom:.5px solid rgba(11,11,16,.10)}
+.cmp thead th:nth-child(2){color:var(--coral);font-weight:600}
+.cmp tbody tr{border-top:.5px solid rgba(11,11,16,.07)}
+.cmp tbody td:first-child{font-weight:500}
+.cmp td:nth-child(2),.cmp td:nth-child(3){text-align:center;width:22%}
+.cmp th:nth-child(2),.cmp th:nth-child(3){text-align:center}
+.yes,.no{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%}
+.yes{background:rgba(18,183,106,.14)} .no{background:rgba(229,72,77,.12)}
+.yes svg{width:13px;height:13px;stroke:var(--mint);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.no svg{width:12px;height:12px;stroke:var(--red);fill:none;stroke-width:3;stroke-linecap:round}
+.cmp tbody tr{opacity:0;transform:translateY(8px);transition:opacity .5s var(--e),transform .5s var(--e)}
+.reveal .cmp tbody tr{opacity:1;transform:none}
+@media(max-width:720px){.cmp th,.cmp td{padding:var(--s3);font-size:.8125rem}}
+
+/* toast */
+.toast{padding:var(--s8) var(--s7);border-radius:var(--r5);
+  background:linear-gradient(150deg,rgba(255,74,23,.15),rgba(255,169,46,.11) 55%,rgba(255,255,255,.5))}
+.toast-head{max-width:640px}
+.toast-head h2{margin:var(--s4) 0 var(--s5)}
+.kit{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);margin-top:var(--s8)}
+.kit-card{padding:var(--s5);border-radius:var(--r3);background:rgba(255,255,255,.72);
+  border:.5px solid var(--rim);box-shadow:var(--spec),var(--cast);transition:transform .4s var(--e),box-shadow .4s var(--e)}
+@media(hover:hover){.kit-card:hover{transform:translateY(-6px);box-shadow:var(--spec),var(--cast-lift)}}
+.kit-art{aspect-ratio:4/3;display:grid;place-items:center;border-radius:var(--r2);margin-bottom:var(--s4);
+  overflow:hidden;position:relative;background:linear-gradient(160deg,#F4F5F7,#E7E9ED)}
+.kit-art img{width:100%;height:100%;object-fit:cover;display:block}
+.kit-art svg{width:78%;height:78%}
+.kit-art.has-photo svg{display:none}
+.kit-art:not(.has-photo) img{display:none}
+.kit-card h4{font-size:1rem}
+.kit-card p{font-size:.8125rem;color:var(--ink-2);margin-top:5px;line-height:1.45}
+.kit-card .spec{margin-top:var(--s3);padding-top:var(--s3);border-top:.5px solid rgba(11,11,16,.09);
+  font-size:.75rem;color:var(--ink-3)}
+.toast-foot{display:flex;align-items:center;gap:var(--s5);flex-wrap:wrap;margin-top:var(--s8);
+  padding-top:var(--s6);border-top:.5px solid rgba(11,11,16,.12)}
+.toast-foot .btn{margin-left:auto}
+@media(max-width:980px){.kit{grid-template-columns:1fr 1fr}}
+@media(max-width:860px){.toast{padding:var(--s7) var(--s5)}.toast-foot .btn{margin-left:0;width:100%}}
+@media(max-width:560px){.kit{grid-template-columns:1fr}}
+
+/* sticky conversion bar */
+.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:250;padding:var(--s3) var(--gut) calc(var(--s3) + env(safe-area-inset-bottom));
+  transform:translateY(110%);transition:transform .45s var(--e);pointer-events:none}
+.stickybar.show{transform:none;pointer-events:auto}
+body.admin .stickybar{transform:translateY(110%);pointer-events:none}
+.stickybar-in{display:flex;align-items:center;gap:var(--s4);max-width:var(--maxw);margin:0 auto;
+  padding:var(--s3) var(--s3) var(--s3) var(--s5);border-radius:var(--pill);
+  background:var(--g-strong);border:.5px solid var(--rim);box-shadow:var(--spec),var(--cast-lift)}
+.stickybar .msg{font-size:.9375rem;letter-spacing:-.018em;line-height:1.25;min-width:0}
+.stickybar .msg b{color:var(--red);font-variant-numeric:tabular-nums}
+.stickybar .msg span{display:block;font-size:.75rem;color:var(--ink-3);margin-top:1px}
+.stickybar .btn{margin-left:auto;flex:none}
+.stickybar .x{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(11,11,16,.06)}
+.stickybar .x svg{width:12px;height:12px;stroke:var(--ink-3);stroke-width:2.6;fill:none;stroke-linecap:round}
+@media(max-width:620px){
+  .stickybar-in{padding:var(--s3);gap:var(--s3)}
+  .stickybar .msg{font-size:.8125rem}
+  .stickybar .msg span{display:none}
+  .stickybar .btn{min-height:40px;height:40px;padding:0 var(--s4);font-size:.875rem;white-space:nowrap}
+  .stickybar .x{display:none}
+}
+
+/* mid-page conversion prompts */
+.midcta{display:flex;align-items:center;gap:var(--s5);flex-wrap:wrap;margin-top:var(--s8);
+  padding:var(--s6) var(--s7);border-radius:var(--r4)}
+.midcta h4{font-size:1.125rem}
+.midcta p{font-size:.875rem;color:var(--ink-2);margin-top:5px;max-width:52ch}
+.midcta .btn{margin-left:auto;flex:none}
+@media(max-width:760px){.midcta{padding:var(--s6) var(--s5)}.midcta .btn{margin-left:0;width:100%}}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);align-items:stretch}
+.plan{padding:var(--s7) var(--s5);border-radius:var(--r4);display:flex;flex-direction:column}
+.plan .tag{height:20px;font-size:.75rem;font-weight:600;color:var(--coral)}
+.plan .nm{font-size:1.25rem;font-weight:600;letter-spacing:-.04em;margin-top:var(--s1)}
+.plan .ds{margin-top:var(--s3);min-height:3.4em;font-size:.875rem;color:var(--ink-2);line-height:1.45}
+.plan .pr{display:flex;align-items:baseline;margin-top:var(--s5)}
+.plan .pr .n{font-size:2.6rem;font-weight:700;letter-spacing:-.062em;line-height:1;font-variant-numeric:tabular-nums}
+.plan .pr .p{font-size:.875rem;color:var(--ink-3);margin-left:6px}
+.plan .rt{margin-top:var(--s2);margin-bottom:var(--s5);font-size:.75rem;color:var(--ink-3);line-height:1.4;min-height:2.6em}
+.plan ul{margin-top:var(--s5);display:flex;flex-direction:column;gap:var(--s3);flex:1}
+.plan li{display:flex;gap:var(--s3);font-size:.8438rem;color:var(--ink-2);line-height:1.45}
+.plan li svg{width:15px;height:15px;flex:none;margin-top:3px;stroke:var(--coral);fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.plan.best{background:linear-gradient(150deg,rgba(255,74,23,.17),rgba(255,169,46,.11) 55%,rgba(139,108,255,.14))}
+@media(max-width:1040px){.plans{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.plans{grid-template-columns:1fr}}
+
+/* proof */
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
+@media(max-width:980px){.g3{grid-template-columns:1fr}}
+.tcard{padding:var(--s6);border-radius:var(--r3);display:flex;flex-direction:column;margin:0}
+.stars{display:flex;gap:2px;margin-bottom:var(--s4)}
+.stars svg{width:15px;height:15px;fill:var(--amber)}
+.tcard blockquote{margin:0;font-size:1.0625rem;line-height:1.48;letter-spacing:-.022em;flex:1}
+.tby{display:flex;align-items:center;gap:var(--s3);margin-top:var(--s5);padding-top:var(--s5);border-top:.5px solid rgba(11,11,16,.09)}
+.tby .av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:.8125rem;font-weight:600;color:#fff;flex:none}
+.tby .nm{font-size:.9375rem;font-weight:600;letter-spacing:-.02em}
+.tby .rl{font-size:.8125rem;color:var(--ink-3)}
+.cases{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);margin-top:var(--s4)}
+.case{padding:var(--s6);border-radius:var(--r3)}
+.case .v{font-size:2rem;font-weight:700;letter-spacing:-.055em;
+  background:linear-gradient(120deg,var(--coral),var(--amber));-webkit-background-clip:text;background-clip:text;color:transparent}
+.case .l{font-size:.875rem;color:var(--ink-2);margin-top:var(--s2);line-height:1.4}
+.case .w{font-size:.75rem;color:var(--ink-3);margin-top:var(--s3)}
+@media(max-width:900px){.cases{grid-template-columns:1fr 1fr}}
+
+/* booking */
+.book{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:var(--s6)}
+@media(max-width:980px){.book{grid-template-columns:1fr}}
+.days{display:flex;gap:var(--s2);overflow-x:auto;padding-bottom:var(--s2);margin-bottom:var(--s5);-webkit-overflow-scrolling:touch}
+.day{flex:none;width:66px;padding:var(--s3) 0;border-radius:var(--r2);text-align:center;
+  background:rgba(255,255,255,.7);border:.5px solid rgba(11,11,16,.10);transition:.22s}
+.day .dw{font-size:.6875rem;color:var(--ink-3)}
+.day .dd{font-size:1.125rem;font-weight:600;letter-spacing:-.03em;margin-top:2px}
+.day.on{background:var(--ink);color:#fff;border-color:transparent}
+.day.on .dw{color:rgba(255,255,255,.65)}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s2)}
+.slot{padding:var(--s3);border-radius:var(--r1);font-size:.875rem;font-weight:500;text-align:center;
+  background:rgba(255,255,255,.7);border:.5px solid rgba(11,11,16,.10);transition:.2s}
+.slot:hover{border-color:var(--coral)}
+.slot.on{background:var(--coral);color:#fff;border-color:transparent}
+.slot.gone{opacity:.35;pointer-events:none;text-decoration:line-through}
+.confirm{padding:var(--s7) var(--s6);border-radius:var(--r4);text-align:center}
+.confirm .ok{width:56px;height:56px;border-radius:50%;margin:0 auto var(--s5);display:grid;place-items:center;
+  background:rgba(18,183,106,.14)}
+.confirm .ok svg{width:26px;height:26px;stroke:var(--mint);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.nextsteps{text-align:left;max-width:400px;margin:var(--s6) auto 0;display:flex;flex-direction:column;gap:var(--s3)}
+.nextsteps li{display:flex;gap:var(--s3);font-size:.875rem;color:var(--ink-2)}
+.nextsteps b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;flex:none;
+  background:rgba(255,74,23,.12);color:var(--coral);font-size:.6875rem}
+
+/* footer */
+footer{padding-block:var(--s9) var(--s6)}
+.fgrid{display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:var(--s7);padding-bottom:var(--s7)}
+.fbrand p{margin-top:var(--s4);max-width:30ch}
+.fcol h5{margin:0 0 var(--s4);font-size:.8125rem;font-weight:600;letter-spacing:-.02em}
+.fcol a{display:block;font-size:.875rem;color:var(--ink-2);padding:var(--s1) 0}
+.fcol a:hover{color:var(--ink)}
+.fbot{display:flex;gap:var(--s4);flex-wrap:wrap;padding-top:var(--s5);border-top:.5px solid rgba(11,11,16,.09)}
+.fbot .r{margin-left:auto;display:flex;gap:var(--s5)}
+@media(max-width:900px){.fgrid{grid-template-columns:1fr 1fr;gap:var(--s6)}}
+
+/* ══ CRM ══ */
+#admin{display:none;padding-top:96px;padding-bottom:var(--s9)}
+body.admin #site{display:none}
+body.admin #admin{display:block}
+.crm-hd{display:flex;align-items:flex-end;gap:var(--s4);flex-wrap:wrap;margin-bottom:var(--s6)}
+.crm-hd h2{font-size:clamp(1.7rem,3.4vw,2.4rem)}
+.crm-kpi{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--s3);margin-bottom:var(--s5)}
+.kcard{padding:var(--s5);border-radius:var(--r2)}
+.kcard .k{font-size:.75rem;color:var(--ink-3)}
+.kcard .v{font-size:1.5rem;font-weight:700;letter-spacing:-.05em;margin-top:var(--s2);font-variant-numeric:tabular-nums}
+@media(max-width:900px){.crm-kpi{grid-template-columns:1fr 1fr}}
+.tools{display:flex;gap:var(--s3);flex-wrap:wrap;margin-bottom:var(--s4);align-items:center}
+.tools input[type=search],.tools select{height:42px;padding:0 var(--s4);border-radius:var(--r1);
+  background:rgba(255,255,255,.86);border:.5px solid rgba(11,11,16,.12);font-size:.9375rem}
+.tools input[type=search]{flex:1;min-width:180px}
+.tbl-wrap{border-radius:var(--r3);overflow:hidden}
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.ltbl{width:100%;min-width:520px;border-collapse:collapse;font-size:.875rem}
+.ltbl th{text-align:left;padding:var(--s3) var(--s4);font-size:.75rem;color:var(--ink-3);font-weight:500;
+  border-bottom:.5px solid rgba(11,11,16,.10);white-space:nowrap}
+.ltbl td{padding:var(--s3) var(--s4);border-top:.5px solid rgba(11,11,16,.07)}
+.ltbl tbody tr{cursor:pointer;transition:background .18s}
+.ltbl tbody tr:hover{background:rgba(255,255,255,.6)}
+.ltbl .rn{font-weight:600;letter-spacing:-.018em}
+.ltbl .sub{font-size:.75rem;color:var(--ink-3)}
+.st{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:var(--pill);font-size:.75rem;font-weight:600;white-space:nowrap}
+.st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.st-new{background:rgba(79,168,255,.14);color:#1B7FD4}
+.st-con{background:rgba(139,108,255,.14);color:#6B4BE0}
+.st-dsc{background:rgba(255,169,46,.18);color:#B87508}
+.st-dcp{background:rgba(255,169,46,.14);color:#8A5A06}
+.st-prp{background:rgba(255,74,23,.13);color:#C4360F}
+.st-neg{background:rgba(255,74,23,.10);color:#9E2C0C}
+.st-won{background:rgba(18,183,106,.15);color:#0A8A50}
+.st-lst{background:rgba(11,11,16,.07);color:#6A6A76}
+.hide-sm{display:table-cell}
+@media(max-width:820px){.hide-sm{display:none}}
+
+.sheet{position:fixed;inset:0;z-index:400;display:none}
+.sheet.open{display:block}
+.sheet-bg{position:absolute;inset:0;background:rgba(11,11,16,.32)}
+.sheet-panel{position:absolute;top:0;right:0;bottom:0;width:min(520px,100%);background:#fff;overflow-y:auto;
+  box-shadow:-20px 0 60px rgba(11,11,16,.2);padding:var(--s6);animation:slidein .35s var(--e)}
+@keyframes slidein{from{transform:translateX(24px);opacity:0}to{transform:none;opacity:1}}
+.sheet h3{margin-bottom:var(--s2)}
+.sheet .close{position:absolute;top:var(--s5);right:var(--s5);width:32px;height:32px;border-radius:50%;
+  display:grid;place-items:center;background:rgba(11,11,16,.06)}
+.sheet .close svg{width:14px;height:14px;stroke:var(--ink);stroke-width:2.4;fill:none;stroke-linecap:round}
+.dl{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);margin:var(--s6) 0}
+.dl .k{font-size:.6875rem;color:var(--ink-3)}
+.dl .v{font-size:.9375rem;font-weight:500;margin-top:2px;word-break:break-word}
+.sec-lbl{font-size:.75rem;font-weight:600;color:var(--ink-3);margin:var(--s6) 0 var(--s3);
+  padding-top:var(--s5);border-top:.5px solid rgba(11,11,16,.09)}
+.tl-item{display:flex;gap:var(--s3);padding:var(--s3) 0}
+.tl-item .dot{width:8px;height:8px;border-radius:50%;background:var(--coral);flex:none;margin-top:7px}
+.tl-item .tx{font-size:.875rem}
+.tl-item .tm{font-size:.75rem;color:var(--ink-3);margin-top:1px}
+.notes{display:flex;flex-direction:column;gap:var(--s3)}
+.note{padding:var(--s3) var(--s4);border-radius:var(--r1);background:rgba(11,11,16,.04);font-size:.875rem}
+.note .who{font-size:.6875rem;color:var(--ink-3);margin-top:4px}
+.toastmsg{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);z-index:500;
+  background:var(--ink);color:#fff;padding:var(--s3) var(--s5);border-radius:var(--pill);font-size:.875rem;
+  opacity:0;pointer-events:none;transition:.3s var(--e)}
+.toastmsg.show{opacity:1;transform:translateX(-50%)}
+
+.ob{opacity:0;transform:translateY(22px);transition:opacity .85s var(--e),transform .85s var(--e)}
+.ob.reveal{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  html{scroll-behavior:auto}.ob{opacity:1;transform:none}
+  .cmp tbody tr{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="field" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="nav-bar live">
+    <a class="logo" href="#"><span class="m"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h6"/></svg></span>VirtualBite</a>
+    <nav class="nav-mid" aria-label="Primary">
+      <a href="#compare">Why us</a><a href="#calculator">ROI Calculator</a><a href="#results">Results</a>
+      <a href="#build">What we build</a><a href="#toast">Toast</a><a href="#pricing">Pricing</a>
+    </nav>
+    <div class="nav-end">
+      <a class="btn btn-dark btn-sm" href="#demo">Book a demo</a>
+    </div>
+  </div>
+</header>
+
+<div id="site">
+<main id="main">
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill"><i></i> Restaurant technology &amp; growth · Toast partner</span>
+      <h1>Stop renting<br>your <span class="grad">customers.</span></h1>
+      <p class="lede">Every marketplace order costs you up to 30% and hands your guest to someone else. We build the website, the app, the ordering and the marketing that bring those orders back in-house — and keep the customer list yours.</p>
+      <div class="cta">
+        <a class="btn btn-coral" href="#calculator">See what you're losing</a>
+        <a class="btn btn-glass" href="#demo">Book a demo</a>
+      </div>
+      <div class="hero-fine">
+        <span><i></i> Live in 3 weeks</span>
+        <span><i></i> You own the data</span>
+        <span><i></i> No long contracts</span>
+      </div>
+    </div>
+
+    <div class="glass calc ob" id="calcCard">
+      <div class="calc-hd">
+        <h4>Your third-party bleed</h4>
+        <span class="badge">LIVE</span>
+      </div>
+
+      <div class="prow">
+        <div class="rl">Monthly sales through DoorDash <span class="rv" id="lDD">$18,000</span></div>
+        <input type="range" id="dd" min="0" max="30000" step="500" value="18000" aria-label="Monthly sales through DoorDash">
+        <select id="rDD" aria-label="DoorDash plan">
+          <option value="0.06">Pickup only — 6%</option>
+          <option value="0.15">Basic — 15%</option>
+          <option value="0.25" selected>Plus — 25%</option>
+          <option value="0.30">Premier — 30%</option>
+        </select>
+      </div>
+
+      <div class="prow">
+        <div class="rl">Monthly sales through Uber Eats <span class="rv" id="lUE">$9,000</span></div>
+        <input type="range" id="ue" min="0" max="30000" step="500" value="9000" aria-label="Monthly sales through Uber Eats">
+        <select id="rUE" aria-label="Uber Eats plan">
+          <option value="0.07">Pickup only — 7%</option>
+          <option value="0.15">Self-delivery — 15%</option>
+          <option value="0.20">Lite — 20%</option>
+          <option value="0.25" selected>Plus — 25%</option>
+          <option value="0.30">Premium — 30%</option>
+        </select>
+      </div>
+
+      <div class="prow">
+        <div class="rl">Monthly sales through Grubhub <span class="rv" id="lGH">$4,000</span></div>
+        <input type="range" id="gh" min="0" max="30000" step="500" value="4000" aria-label="Monthly sales through Grubhub">
+        <select id="rGH" aria-label="Grubhub plan">
+          <option value="0.05">Basic, self-delivery — 5%</option>
+          <option value="0.15">Basic + their drivers — 15%</option>
+          <option value="0.20">All-Access, self-delivery — 20%</option>
+          <option value="0.25">Plus + their drivers — 25%</option>
+          <option value="0.30" selected>All-Access + their drivers — 30%</option>
+        </select>
+      </div>
+
+      <div class="prow" style="margin-bottom:0">
+        <div class="rl">Your average ticket <span class="rv" id="lTK">$34</span></div>
+        <input type="range" id="iTicket" min="8" max="90" step="1" value="34" aria-label="Average ticket size">
+      </div>
+
+      <div class="receipt">
+        <div class="runits">
+          <span class="rlbl">Show me</span>
+          <div class="unitseg" role="group" aria-label="Show figures per month or per year">
+            <button type="button" id="uMo">Per month</button>
+            <button type="button" id="uYr" class="on">Per year</button>
+          </div>
+        </div>
+        <div class="rline"><span>Menu sales through the apps</span><b class="tn" id="rSales">$372,000</b></div>
+        <div class="rline neg"><span>Commission</span><b class="tn" id="rComm">−$95,400</b></div>
+        <div class="rline neg"><span>Their card processing, 2.9% + 30¢</span><b class="tn" id="rProc">−$14,070</b></div>
+        <div class="rline tot"><span>Actually deposited to you</span><b class="tn" id="rNet">$262,530</b></div>
+      </div>
+
+      <div class="result">
+        <div class="rk" id="bleedLbl">Taken from you every year</div>
+        <div class="big tn" id="bleed">$109,470</div>
+        <div class="sub">That's <b id="bleedAlt">$9,123 every month</b>, an effective take rate of
+          <b id="rEff">29.4%</b> — and you still don't get the guest's name.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ STRIP ══════ -->
+<section class="ob" style="padding-bottom:var(--sec)">
+  <div class="wrap">
+    <div class="glass strong strip">
+      <div><div class="v">15–30%</div><div class="l">Typical marketplace commission per order</div></div>
+      <div><div class="v">0%</div><div class="l">Commission on orders through your own site</div></div>
+      <div><div class="v">2026</div><div class="l">Founding client onboarding open now</div></div>
+      <div><div class="v">Toast</div><div class="l">Certified implementation partner</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════ COMPARISON ══════ -->
+<section class="sec ob" id="compare">
+  <div class="wrap">
+    <div class="head">
+      <span class="pill"><i></i> Why us</span>
+      <h2>VirtualBite vs. the marketplaces.</h2>
+      <p class="lede">Marketplaces are a rental agreement. This is ownership.</p>
+    </div>
+    <div class="glass strong cmp">
+      <div class="cmp-scroll">
+        <table>
+          <thead><tr><th>&nbsp;</th><th>VirtualBite</th><th>Third-party apps</th></tr></thead>
+          <tbody id="cmpBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="glass strong midcta">
+      <div>
+        <h4>That difference is worth <span id="carryFig">$109,470</span> a year to you.</h4>
+        <p>We'll walk your actual numbers on a call and tell you what's realistically recoverable — including if the answer is "not enough to bother."</p>
+      </div>
+      <a class="btn btn-coral" href="#demo">Book a demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FULL ROI ══════ -->
+<section class="sec ob" id="calculator">
+  <div class="wrap">
+    <div class="head">
+      <span class="pill"><i></i> ROI calculator</span>
+      <h2>Now the other side of that number.</h2>
+      <p class="lede">You won't get all of it back and we won't pretend otherwise. Set how much you think you can shift to your own site and see what's actually left over.</p>
+    </div>
+    <div class="roi">
+      <div class="glass panel">
+        <div class="inputs">
+          <div class="fld"><label for="iSales">Total monthly sales, all channels</label><input type="number" id="iSales" value="120000" min="0" step="1000"></div>
+          <div class="fld"><label for="iMkt">Monthly marketing spend</label><input type="number" id="iMkt" value="2500" min="0" step="100"></div>
+          <div class="row" style="margin:0">
+            <div class="rl">Orders you can shift to direct <span class="rv" id="lSH">30%</span></div>
+            <input type="range" id="sh" min="10" max="70" step="5" value="30" aria-label="Share of marketplace orders shifted direct">
+          </div>
+          <p class="tiny">Our clients average 28–42% in year one. We default low on purpose.</p>
+        </div>
+
+        <div class="dependence" style="margin-top:var(--s6);border-top:.5px solid rgba(11,11,16,.10);border-bottom:0;padding-top:var(--s5)">
+          <span class="n tn" id="oDep">0%</span>
+          <span class="t">of your revenue runs through apps that own the guest relationship, not you.</span>
+        </div>
+        <p class="tiny" id="oMkt" style="margin-top:calc(var(--s5) * -1)"></p>
+
+        <details class="assume">
+          <summary>What this model does and doesn't count</summary>
+          <ul>
+            <li>Uses the plan tier you pick for each app. Published 2026 rates: DoorDash 15/25/30% delivery and 6% pickup, Uber Eats 20/25/30% and 7% pickup, Grubhub 5/15/20% marketing plus 10% if they drive.</li>
+            <li>All three charge card processing on top of commission, not inside it. We count roughly 2.9% + 30¢, so the effective take rate you see is higher than the headline percentage.</li>
+            <li>On a direct order you still pay processing — 2.9% + 10¢ on our platform — so we subtract that too. Processing largely cancels out; the commission is the real saving.</li>
+            <li>Subtracts the Growth plan at $549/mo and the $2,900 one-time build before showing any gain.</li>
+            <li>Assumes a six-month ramp. Nobody converts a third of their app orders in week one.</li>
+            <li>Does not count driver cost if you don't already deliver, or the new revenue from loyalty, email and SMS to guests you now own. Those push in opposite directions, so we leave both out.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="glass strong panel">
+        <div class="outs">
+          <div class="out bad"><div class="k">Taken by the apps, per year</div><div class="v tn" id="oFees">$0</div></div>
+          <div class="out"><div class="k">Recovered, per year</div><div class="v tn" id="oSaved">$0</div></div>
+          <div class="out"><div class="k">Your cost to do it, per year</div><div class="v tn" id="oCost">$0</div></div>
+          <div class="out good"><div class="k">Net gain, first year</div><div class="v tn" id="oNet">$0</div></div>
+        </div>
+
+        <div class="bars">
+          <div class="bar">
+            <div class="bl">Where every $100 goes today<b class="tn" id="bKeepNow">You keep $75</b></div>
+            <div class="split">
+              <i id="segFee" style="width:25%;background:linear-gradient(90deg,#E5484D,#FF7A5C)">fees</i>
+              <i id="segKeepNow" style="width:75%;background:rgba(11,11,16,.14);color:var(--ink)">you keep</i>
+            </div>
+          </div>
+          <div class="bar">
+            <div class="bl">Where every $100 goes direct<b class="tn" id="bKeepDir">You keep $96</b></div>
+            <div class="split">
+              <i id="segProc" style="width:4%;background:linear-gradient(90deg,var(--coral),var(--amber))"></i>
+              <i id="segKeepDir" style="width:96%;background:rgba(18,183,106,.22);color:#0A8A50">you keep</i>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj">
+          <div style="display:flex;font-size:.8125rem;color:var(--ink-2);margin-bottom:var(--s3)">
+            Cumulative position, including the build fee
+            <b class="tn" style="margin-left:auto;color:var(--ink)" id="pPay">—</b>
+          </div>
+          <svg viewBox="0 0 400 130" role="img" aria-label="Cumulative position over twelve months, starting negative from the build fee and crossing into profit">
+            <defs>
+              <linearGradient id="pf" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#12B76A" stop-opacity=".24"/><stop offset="100%" stop-color="#12B76A" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <line id="zeroLine" x1="0" x2="400" stroke="rgba(11,11,16,.18)" stroke-width="1" stroke-dasharray="3 3"></line>
+            <path id="projFill" fill="url(#pf)" d=""></path>
+            <path id="projLine" fill="none" stroke="#12B76A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d=""></path>
+            <circle id="payDot" r="4.5" fill="#12B76A" stroke="#fff" stroke-width="2" style="display:none"></circle>
+          </svg>
+          <div style="display:flex;justify-content:space-between;font-size:.6875rem;color:var(--ink-3);margin-top:6px">
+            <span>Month 1</span><span>Month 6</span><span>Month 12</span>
+          </div>
+        </div>
+        <a class="btn btn-coral btn-full btn-sm" href="#demo" style="margin-top:var(--s5)">Get this modelled for my restaurant</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ RESULTS ══════ -->
+<section class="sec ob" id="results">
+  <div class="wrap">
+    <div class="head">
+      <span class="pill"><i></i> Results</span>
+      <h2>What we will and won't claim.</h2>
+      <p class="lede">We’re early. Rather than borrow someone else’s numbers, here is exactly what we can stand behind today.</p>
+    </div>
+    <div class="g3" id="quotes"></div>
+    <div class="cases">
+      <div class="glass lift case"><div class="v">15–30%</div><div class="l">Marketplace commission on delivery orders</div><div class="w">DoorDash, Uber Eats and Grubhub published tiers</div></div>
+      <div class="glass lift case"><div class="v">+3%</div><div class="l">Card processing they charge on top of commission</div><div class="w">Not included in the headline rate</div></div>
+      <div class="glass lift case"><div class="v">0%</div><div class="l">Commission on an order through your own site</div><div class="w">You pay card processing only</div></div>
+      <div class="glass lift case"><div class="v">Toast</div><div class="l">Certified implementation partner</div><div class="w">POS, KDS, handhelds and hardware</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ WHAT WE BUILD ══════ -->
+<section class="sec ob" id="build">
+  <div class="wrap">
+    <div class="head">
+      <span class="pill"><i></i> What we build</span>
+      <h2>One partner instead of five vendors.</h2>
+      <p class="lede">Technology, marketing and hardware under one roof, one contact and one invoice.</p>
+    </div>
+    <div class="svc" id="svc"></div>
+  </div>
+</section>
+
+<section class="sec ob" id="toast">
+  <div class="wrap">
+    <div class="glass toast">
+      <div class="toast-head">
+        <span class="pill"><i></i> Certified Toast partner</span>
+        <h2>Toast, implemented properly.</h2>
+        <p class="lede">Most POS problems aren't the POS — they're the setup. We scope it, install it, build your menu, train your team, then stay on as your support line so you're never filing a ticket into the void.</p>
+      </div>
+
+      <div class="kit" id="kit"></div>
+
+      <div class="toast-foot">
+        <div>
+          <h4>Every kitchen is different, so we scope before we price.</h4>
+          <p class="small" style="margin-top:6px">Installation, cabling, menu build, staff training and go-live support included in every quote.</p>
+        </div>
+        <a class="btn btn-dark" href="#demo">Get a Toast quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PRICING ══════ -->
+<section class="sec ob" id="pricing">
+  <div class="wrap">
+    <div class="head">
+      <span class="pill"><i></i> Pricing</span>
+      <h2>Priced to pay for itself in month one.</h2>
+      <p class="lede">Flat monthly, no revenue share, no per-order commission. If we can't beat what you're paying the marketplaces, we'll tell you on the call.</p>
+    </div>
+    <div class="plans">
+      <div class="glass lift plan">
+        <span class="tag"></span>
+        <div class="nm">Starter</div>
+        <p class="ds">For independent restaurants that need to be found and take orders directly.</p>
+        <div class="pr"><span class="n">$199</span><span class="p">/mo</span></div>
+        <div class="rt">Plus $1,200 one-time build · card processing quoted with your plan</div>
+        <a class="btn btn-glass btn-full btn-sm" href="#demo">Book a demo</a>
+        <ul id="p1"></ul>
+      </div>
+      <div class="glass lift plan best">
+        <span class="tag">Most restaurants start here</span>
+        <div class="nm">Growth</div>
+        <p class="ds">For restaurants ready to pull orders off the marketplaces and keep them.</p>
+        <div class="pr"><span class="n">$549</span><span class="p">/mo</span></div>
+        <div class="rt">Plus $2,900 one-time build · card processing quoted with your plan</div>
+        <a class="btn btn-coral btn-full btn-sm" href="#demo">Book a demo</a>
+        <ul id="p2"></ul>
+      </div>
+      <div class="glass lift plan">
+        <span class="tag"></span>
+        <div class="nm">Enterprise</div>
+        <p class="ds">For multi-location operators and franchise groups.</p>
+        <div class="pr"><span class="n" style="font-size:1.9rem">Custom</span></div>
+        <div class="rt">Scoped per location · volume processing rates</div>
+        <a class="btn btn-glass btn-full btn-sm" href="#demo">Talk to us</a>
+        <ul id="p3"></ul>
+      </div>
+      <div class="glass lift plan">
+        <span class="tag">Toast partner</span>
+        <div class="nm">Toast Solutions</div>
+        <p class="ds">POS, kitchen displays, handhelds and hardware with implementation.</p>
+        <div class="pr"><span class="n" style="font-size:1.9rem">Quoted</span></div>
+        <div class="rt">Every kitchen is different — we scope before we price</div>
+        <a class="btn btn-glass btn-full btn-sm" href="#demo">Request a quote</a>
+        <ul id="p4"></ul>
+      </div>
+    </div>
+    <p class="tiny" style="text-align:center;margin-top:var(--s6)">Your domain, your menu and your customer list stay yours — exportable in one click, any time.</p>
+  </div>
+</section>
+
+<!-- ══════ BOOKING ══════ -->
+<section class="sec ob" id="demo">
+  <div class="wrap">
+    <div class="head">
+      <span class="pill"><i></i> Live demo</span>
+      <h2>Thirty minutes. Real numbers.</h2>
+      <p class="lede">We'll pull up your current site, your marketplace mix and your Google listing, and show you exactly where the money is going.</p>
+    </div>
+    <div class="book" id="bookWrap">
+      <div class="glass panel">
+        <h4 style="margin-bottom:var(--s4)">Pick a time</h4>
+        <div class="days" id="days"></div>
+        <div class="slots" id="slots"></div>
+        <p class="tiny" style="margin-top:var(--s4)">All times Eastern. You'll get a confirmation email and a calendar invite.</p>
+      </div>
+      <form class="glass strong panel" id="leadForm" novalidate>
+        <h4 style="margin-bottom:var(--s5)">Your details</h4>
+        <div class="inputs">
+          <div class="f2">
+            <div class="fld"><label for="fRest">Restaurant name *</label><input type="text" id="fRest" required></div>
+            <div class="fld"><label for="fOwner">Your name *</label><input type="text" id="fOwner" required></div>
+          </div>
+          <div class="f2">
+            <div class="fld"><label for="fEmail">Email *</label><input type="email" id="fEmail" required></div>
+            <div class="fld"><label for="fPhone">Phone *</label><input type="tel" id="fPhone" required></div>
+          </div>
+          <div class="f2">
+            <div class="fld"><label for="fCity">City &amp; state</label><input type="text" id="fCity" placeholder="Austin, TX"></div>
+            <div class="fld"><label for="fPos">Current POS</label>
+              <select id="fPos"><option>Toast</option><option>Square</option><option>Clover</option><option>Aloha</option><option>SpotOn</option><option>Other / not sure</option></select>
+            </div>
+          </div>
+          <div class="fld"><label for="fPain">What's the biggest problem right now?</label>
+            <textarea id="fPain" placeholder="Marketplace fees, no website, orders getting missed…"></textarea></div>
+        </div>
+        <button class="btn btn-coral btn-full" type="submit" style="margin-top:var(--s6)">Confirm my demo</button>
+        <p class="tiny" style="margin-top:var(--s4)">We ask six questions here, not twenty. The rest we'll fill in on the call — long forms lose more restaurants than they qualify.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <a class="logo" href="#"><span class="m"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h6"/></svg></span>VirtualBite Partners</a>
+        <p class="small">Restaurant technology and growth. We help restaurants make more money while spending less money.</p>
+      </div>
+      <div class="fcol"><h5>Technology</h5><a href="#build">Websites</a><a href="#build">Mobile apps</a><a href="#build">Online ordering</a><a href="#build">QR &amp; digital menus</a><a href="#build">Custom software</a><a href="#build">Integrations</a></div>
+      <div class="fcol"><h5>Growth</h5><a href="#build">SEO</a><a href="#build">Google Business</a><a href="#build">Paid advertising</a><a href="#build">Email &amp; SMS</a><a href="#build">Loyalty &amp; gift cards</a><a href="#build">Reputation</a></div>
+      <div class="fcol"><h5>Toast</h5><a href="#toast">Toast POS</a><a href="#toast">Kitchen displays</a><a href="#toast">Handhelds</a><a href="#toast">Implementation</a><a href="#toast">Training</a></div>
+      <div class="fcol"><h5>Company</h5><a href="#results">Case studies</a><a href="#pricing">Pricing</a><a href="#demo">Book a demo</a><a href="#">Careers</a><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+    <div class="fbot">
+      <span class="tiny">© 2026 VirtualBite Partners.</span>
+      <span class="r tiny"><a href="#">Privacy</a><a href="#">Terms</a><a href="#demo">Contact</a></span>
+    </div>
+  </div>
+</footer>
+</div>
+
+<div class="stickybar" id="sticky">
+  <div class="stickybar-in">
+    <div class="msg">You're handing the apps <b id="sbNum">$109,470</b> a year.
+      <span>Thirty minutes and we'll show you what's recoverable.</span></div>
+    <a class="btn btn-coral btn-sm" href="#demo">Book a demo</a>
+    <button class="x" id="sbClose" type="button" aria-label="Dismiss">
+      <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+  </div>
+</div>
+
+<div class="toastmsg" id="toastMsg" role="status"></div>
+
+<script>
+(function(){
+"use strict";
+var RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+var $ = function(id){ return document.getElementById(id); };
+var money = function(n){ return "$" + Math.round(n).toLocaleString("en-US"); };
+var money0 = function(n){ return "$" + Math.round(n/1000) + "k"; };
+
+function toast(msg){
+  var t = $("toastMsg"); t.textContent = msg; t.classList.add("show");
+  clearTimeout(t._t); t._t = setTimeout(function(){ t.classList.remove("show"); }, 2600);
+}
+
+/* ───── view toggle ───── */
+
+/* ───── marketplace model ─────
+   Rates are the published 2026 tiers. Marketplaces charge card processing
+   (~2.9% + 30¢) IN ADDITION to commission, so both are counted.            */
+var dd=$("dd"), ue=$("ue"), gh=$("gh");
+var rDD=$("rDD"), rUE=$("rUE"), rGH=$("rGH"), iTicket=$("iTicket");
+var MP_PROC_PCT = 0.029, MP_PROC_FIX = 0.30;
+
+function model(){
+  var s = [+dd.value, +ue.value, +gh.value];
+  var r = [+rDD.value, +rUE.value, +rGH.value];
+  var ticket = Math.max(+iTicket.value || 34, 1);
+  var sales = s[0]+s[1]+s[2];
+  var commission = s[0]*r[0] + s[1]*r[1] + s[2]*r[2];
+  var orders = sales/ticket;
+  var processing = sales*MP_PROC_PCT + orders*MP_PROC_FIX;
+  var taken = commission + processing;
+  return {
+    sales:sales, orders:orders, ticket:ticket,
+    commission:commission, processing:processing, taken:taken,
+    deposited:sales-taken,
+    effRate: sales>0 ? taken/sales : 0,
+    commRate: sales>0 ? commission/sales : 0
+  };
+}
+
+function heroCalc(){
+  var m = model();
+  var k = UNIT === "yr" ? 12 : 1;
+  $("lDD").textContent = money(dd.value);
+  $("lUE").textContent = money(ue.value);
+  $("lGH").textContent = money(gh.value);
+  $("lTK").textContent = "$" + iTicket.value;
+
+  $("rSales").textContent = money(m.sales*k);
+  $("rComm").textContent  = "−" + money(m.commission*k);
+  $("rProc").textContent  = "−" + money(m.processing*k);
+  $("rNet").textContent   = money(m.deposited*k);
+
+  $("bleed").textContent    = money(m.taken*k);
+  $("bleedLbl").textContent = UNIT === "yr" ? "Taken from you every year" : "Taken from you every month";
+  $("bleedAlt").textContent = UNIT === "yr"
+    ? money(m.taken) + " every month"
+    : money(m.taken*12) + " a year";
+  $("rEff").textContent     = (m.effRate*100).toFixed(1) + "%";
+  var sb = document.getElementById("sbNum");
+  if(sb) sb.textContent = money(m.taken*12);
+  var cf = document.getElementById("carryFig");
+  if(cf) cf.textContent = money(m.taken*12);
+  return m;
+}
+var UNIT = "yr";
+function setUnit(u){
+  UNIT = u;
+  $("uMo").classList.toggle("on", u === "mo");
+  $("uYr").classList.toggle("on", u === "yr");
+  heroCalc();
+}
+$("uMo").onclick = function(){ setUnit("mo"); };
+$("uYr").onclick = function(){ setUnit("yr"); };
+[dd,ue,gh,rDD,rUE,rGH,iTicket].forEach(function(el){
+  el.addEventListener("input", function(){ heroCalc(); fullCalc(); });
+  el.addEventListener("change", function(){ heroCalc(); fullCalc(); });
+});
+
+/* ───── full ROI ───── */
+var sh=$("sh"), iSales=$("iSales"), iMkt=$("iMkt");
+var PLAN_MO = 549, BUILD = 2900, OUR_PCT = 0.029, OUR_FIX = 0.10, RAMP = 6;
+
+function fullCalc(){
+  var m      = model();
+  var shift  = +sh.value/100;
+  var mkt    = Math.max(+iMkt.value || 0, 0);
+  var totalMo= Math.max(+iSales.value || 0, m.sales);   // never below marketplace volume
+
+  var takenNow = m.taken * 12;                          // commission + their processing
+
+  // move a slice of that volume onto your own site
+  var movedMo     = m.sales * shift;
+  var movedOrders = movedMo / m.ticket;
+  var avoided     = (movedMo*m.commRate + movedMo*MP_PROC_PCT + movedOrders*MP_PROC_FIX) * 12;
+  var ourProc     = (movedMo*OUR_PCT + movedOrders*OUR_FIX) * 12;
+  var platform    = PLAN_MO * 12;
+  var totalCost   = ourProc + platform;
+  var net         = avoided - totalCost;
+
+  $("lSH").textContent   = sh.value + "%";
+  $("oFees").textContent = money(takenNow);
+  $("oSaved").textContent= money(avoided);
+  $("oCost").textContent = money(totalCost);
+  $("oNet").textContent  = (net >= 0 ? "+" : "−") + money(Math.abs(net));
+
+  $("oDep").textContent = (totalMo > 0 ? (m.sales/totalMo)*100 : 0).toFixed(0) + "%";
+
+  var mktAnnual = mkt*12;
+  $("oMkt").textContent = (mktAnnual > 0 && takenNow > 0)
+    ? "For comparison, you spend " + money(mktAnnual) + " a year on marketing. The apps take "
+      + (takenNow/mktAnnual).toFixed(1) + "× that, and none of it builds anything you keep."
+    : "";
+
+  // per-$100 split
+  var feePct  = m.effRate*100;
+  var procPct = (OUR_PCT + OUR_FIX/m.ticket)*100;
+  $("segFee").style.width     = feePct.toFixed(1)+"%";
+  $("segKeepNow").style.width = Math.max(0,100-feePct).toFixed(1)+"%";
+  $("segProc").style.width    = procPct.toFixed(1)+"%";
+  $("segKeepDir").style.width = Math.max(0,100-procPct).toFixed(1)+"%";
+  $("segFee").textContent     = feePct >= 12 ? "$"+feePct.toFixed(0)+" taken" : "";
+  $("segProc").textContent    = "";
+  $("segKeepNow").textContent = "you keep";
+  $("segKeepDir").textContent = "you keep";
+  $("bKeepNow").textContent   = "You keep $" + Math.max(0,100-feePct).toFixed(0) + " of every $100";
+  $("bKeepDir").textContent   = "You keep $" + Math.max(0,100-procPct).toFixed(0) + " of every $100";
+
+  // 12-month cumulative position, starting under water by the build fee
+  var W=400, H=130, PAD=10;
+  var cum = -BUILD, pts = [[0,-BUILD]], payback = null;
+  for(var i=1;i<=12;i++){
+    var r  = shift * Math.min(1, i/RAMP);
+    var mv = m.sales * r, ord = mv/m.ticket;
+    var gain = (mv*m.commRate + mv*MP_PROC_PCT + ord*MP_PROC_FIX)
+             - (mv*OUR_PCT + ord*OUR_FIX) - PLAN_MO;
+    cum += gain;
+    if(payback === null && cum >= 0) payback = i;
+    pts.push([i, cum]);
+  }
+  var vals = pts.map(function(p){ return p[1]; });
+  var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+  if(hi - lo < 1){ hi = lo + 1; }
+  var y = function(v){ return PAD + (1 - (v-lo)/(hi-lo)) * (H - PAD*2); };
+  var x = function(i){ return (i/12)*W; };
+
+  var d = pts.map(function(p,i){ return (i?"L":"M") + x(p[0]).toFixed(1) + "," + y(p[1]).toFixed(1); }).join(" ");
+  $("projLine").setAttribute("d", d);
+  $("projFill").setAttribute("d", d + " L"+W+","+y(Math.min(0,lo)).toFixed(1)+" L0,"+y(Math.min(0,lo)).toFixed(1)+" Z");
+  $("zeroLine").setAttribute("y1", y(0).toFixed(1));
+  $("zeroLine").setAttribute("y2", y(0).toFixed(1));
+
+  var dot = $("payDot");
+  if(payback){
+    dot.style.display = "";
+    dot.setAttribute("cx", x(payback).toFixed(1));
+    dot.setAttribute("cy", y(pts[payback][1]).toFixed(1));
+    $("pPay").textContent = "Pays for itself in month " + payback;
+  } else {
+    dot.style.display = "none";
+    $("pPay").textContent = net > 0 ? "Pays back after month 12" : "Doesn't pay back at these numbers";
+  }
+}
+function heroCalcSilent(){ return model(); }
+[sh,iSales,iMkt].forEach(function(el){ el.addEventListener("input", fullCalc); });
+
+/* ───── Toast hardware kit ─────
+   ┌──────────────────────────────────────────────────────────────────┐
+   │  DROP YOUR TOAST PHOTOGRAPHY HERE                                │
+   │  Licensed source: brandfolder.com/toast/media-kit (usage          │
+   │  guidelines apply) or your Local Partner portal collateral.       │
+   │  Questions on usage rights: brand@toasttab.com                    │
+   │                                                                   │
+   │  Local files beat hotlinks — put them in /images/ and reference    │
+   │  them here. Leave a value as "" to keep the illustration.         │
+   └──────────────────────────────────────────────────────────────────┘ */
+var TOAST_PHOTOS = {
+  terminal : "",   /* e.g. "/images/toast-flex-terminal.jpg"   */
+  kds      : "",   /* e.g. "/images/toast-kds.jpg"             */
+  handheld : "",   /* e.g. "/images/toast-go-handheld.jpg"     */
+  reader   : ""    /* e.g. "/images/toast-tap-reader.jpg"      */
+};
+
+var HW = [
+  ["terminal","Toast POS terminal","The countertop register your staff rings on all day.","Countertop or stand-mounted",
+   '<rect x="18" y="12" width="84" height="58" rx="5" fill="#22262E"/><rect x="23" y="17" width="74" height="48" rx="3" fill="#39404C"/>'+
+   '<rect x="28" y="22" width="30" height="7" rx="2" fill="#FF6A2E"/><rect x="28" y="34" width="44" height="4" rx="2" fill="#5B6472"/>'+
+   '<rect x="28" y="42" width="36" height="4" rx="2" fill="#5B6472"/><rect x="28" y="50" width="40" height="4" rx="2" fill="#5B6472"/>'+
+   '<rect x="52" y="70" width="16" height="14" fill="#4A515D"/><rect x="34" y="84" width="52" height="7" rx="3.5" fill="#2B303A"/>'+
+   '<rect x="86" y="60" width="26" height="34" rx="4" fill="#31373F"/><rect x="90" y="65" width="18" height="12" rx="2" fill="#4C5461"/>'+
+   '<circle cx="99" cy="85" r="4" fill="#FF6A2E"/>'],
+
+  ["kds","Kitchen Display System","One rail for every channel, timed and coursed. No more printer jams.","Wall or shelf mounted, splash rated",
+   '<rect x="10" y="16" width="100" height="62" rx="5" fill="#1C2027"/><rect x="15" y="21" width="90" height="52" rx="3" fill="#0E1116"/>'+
+   '<rect x="19" y="25" width="26" height="44" rx="3" fill="#17B26A" opacity=".22"/><rect x="22" y="28" width="16" height="3" rx="1.5" fill="#17B26A"/>'+
+   '<rect x="22" y="35" width="20" height="2.5" rx="1.25" fill="#6B7480"/><rect x="22" y="41" width="14" height="2.5" rx="1.25" fill="#6B7480"/>'+
+   '<rect x="47" y="25" width="26" height="44" rx="3" fill="#FFA92E" opacity=".22"/><rect x="50" y="28" width="16" height="3" rx="1.5" fill="#FFA92E"/>'+
+   '<rect x="50" y="35" width="20" height="2.5" rx="1.25" fill="#6B7480"/><rect x="50" y="41" width="17" height="2.5" rx="1.25" fill="#6B7480"/>'+
+   '<rect x="75" y="25" width="26" height="44" rx="3" fill="#FF4A17" opacity=".22"/><rect x="78" y="28" width="16" height="3" rx="1.5" fill="#FF4A17"/>'+
+   '<rect x="78" y="35" width="19" height="2.5" rx="1.25" fill="#6B7480"/><rect x="78" y="41" width="13" height="2.5" rx="1.25" fill="#6B7480"/>'+
+   '<rect x="54" y="78" width="12" height="10" fill="#2B303A"/><rect x="40" y="88" width="40" height="6" rx="3" fill="#22262E"/>'],
+
+  ["handheld","Toast Go handheld","Fire orders and take payment at the table. Fewer trips, faster turns.","All-day battery, drop rated",
+   '<rect x="40" y="8" width="40" height="84" rx="8" fill="#22262E"/><rect x="44" y="18" width="32" height="58" rx="3" fill="#39404C"/>'+
+   '<rect x="48" y="22" width="18" height="5" rx="2.5" fill="#FF6A2E"/><rect x="48" y="32" width="24" height="3" rx="1.5" fill="#5B6472"/>'+
+   '<rect x="48" y="39" width="20" height="3" rx="1.5" fill="#5B6472"/><rect x="48" y="46" width="22" height="3" rx="1.5" fill="#5B6472"/>'+
+   '<rect x="48" y="58" width="24" height="12" rx="3" fill="#FF4A17"/><rect x="53" y="12" width="14" height="2.5" rx="1.25" fill="#4A515D"/>'+
+   '<rect x="52" y="80" width="16" height="6" rx="3" fill="#4A515D"/>'+
+   '<path d="M86 34a10 10 0 010 12M92 30a16 16 0 010 20" stroke="#FF6A2E" stroke-width="2.4" fill="none" stroke-linecap="round"/>'],
+
+  ["reader","Toast Tap reader","Contactless, chip and swipe. Pairs with the terminal or the handheld.","EMV, Apple Pay, Google Pay",
+   '<rect x="34" y="26" width="52" height="52" rx="10" fill="#22262E"/><rect x="40" y="32" width="40" height="26" rx="4" fill="#39404C"/>'+
+   '<circle cx="60" cy="45" r="7" fill="none" stroke="#FF6A2E" stroke-width="2.4"/>'+
+   '<path d="M60 38a7 7 0 010 14" stroke="#FFA92E" stroke-width="2.4" fill="none" stroke-linecap="round"/>'+
+   '<rect x="44" y="64" width="32" height="6" rx="3" fill="#4A515D"/>'+
+   '<path d="M96 38a12 12 0 010 14M103 33a19 19 0 010 24" stroke="#FF6A2E" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".7"/>']
+];
+$("kit").innerHTML = HW.map(function(h){
+  var photo = TOAST_PHOTOS[h[0]] || "";
+  return '<article class="kit-card">'+
+    '<div class="kit-art'+(photo?" has-photo":"")+'">'+
+      (photo ? '<img src="'+photo+'" alt="'+h[1]+'" loading="lazy" decoding="async" '+
+               'onerror="this.closest(\'.kit-art\').classList.remove(\'has-photo\')">' : '')+
+      '<svg viewBox="0 0 120 100" role="img" aria-label="Illustration of a '+h[1]+'">'+h[4]+'</svg>'+
+    '</div>'+
+    '<h4>'+h[1]+'</h4><p>'+h[2]+'</p><div class="spec">'+h[3]+'</div></article>';
+}).join("");
+
+/* ───── sticky conversion bar ───── */
+var sticky = $("sticky"), dismissed = false;
+$("sbClose").onclick = function(){ dismissed = true; sticky.classList.remove("show"); };
+function stickyCheck(){
+  if(dismissed || document.body.classList.contains("admin")){ sticky.classList.remove("show"); return; }
+  var demo = $("demo").getBoundingClientRect();
+  var past = scrollY > innerHeight * 0.85;         // only after they've engaged with the hero
+  var atForm = demo.top < innerHeight && demo.bottom > 0;  // hide once they're at the form
+  sticky.classList.toggle("show", past && !atForm);
+}
+addEventListener("scroll", stickyCheck, {passive:true});
+addEventListener("resize", stickyCheck);
+var groups = [
+  ["Ordering &amp; apps",'<rect x="5" y="2" width="14" height="20" rx="3"/><path d="M10 18h4"/>',
+    ["Restaurant websites","Native iOS &amp; Android apps","Online ordering","Custom ordering platforms","Catering systems","QR ordering","Digital menus"]],
+  ["Guest &amp; loyalty",'<circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 016-6h4a6 6 0 016 6v1"/>',
+    ["Loyalty &amp; rewards","Digital gift cards","Email marketing","SMS marketing","Reputation management","Review automation"]],
+  ["Growth &amp; brand",'<path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>',
+    ["SEO optimization","Google Business optimization","Paid advertising","Social media management","Branding","Restaurant consulting"]],
+  ["Technology &amp; POS",'<rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 10h18"/>',
+    ["Toast POS implementation","Kitchen Display Systems","Toast handhelds &amp; hardware","Custom software","Integrations","Onboarding &amp; training"]]
+];
+$("svc").innerHTML = groups.map(function(g){
+  return '<div class="glass lift svc-col"><h4><span><svg viewBox="0 0 24 24">'+g[1]+'</svg></span>'+g[0]+'</h4><ul>'+
+    g[2].map(function(i){ return "<li>"+i+"</li>"; }).join("")+'</ul></div>';
+}).join("");
+
+/* ───── comparison ───── */
+var yes='<span class="yes"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>';
+var no ='<span class="no"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></span>';
+var rows = [
+  ["You own the customer list", yes, no],
+  ["Commission per order", "<b>0%</b>", "<b>15–30%</b>"],
+  ["Your brand on the checkout", yes, no],
+  ["Guest emails and phone numbers", yes, no],
+  ["Native mobile app", yes, no],
+  ["Loyalty and gift cards", yes, no],
+  ["SEO that ranks your own domain", yes, no],
+  ["Marketing you control", yes, no],
+  ["Order data and analytics", yes, "Limited"],
+  ["Set your own menu pricing", yes, "Inflated to cover fees"],
+  ["Toast POS integration", yes, no],
+  ["A person who answers the phone", yes, no]
+];
+$("cmpBody").innerHTML = rows.map(function(r,i){
+  return '<tr style="transition-delay:'+(i*45)+'ms"><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>';
+}).join("");
+
+/* ───── pricing lists ───── */
+var tick = '<svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>';
+var feats = {
+  p1:["Custom restaurant website","Online ordering, pickup &amp; delivery","Digital menu &amp; QR ordering","SEO optimization","Google Business optimization","Hosting, SSL &amp; monitoring","Monthly menu updates"],
+  p2:["Everything in Starter","Native iOS &amp; Android app","Loyalty &amp; rewards program","Digital gift cards","Email &amp; SMS marketing","Paid advertising management","Reputation management","Growth analytics dashboard"],
+  p3:["Everything in Growth","Unlimited locations","Custom software &amp; API integrations","Catering &amp; enterprise ordering","Dedicated success manager","Priority support &amp; SLA","Quarterly business reviews"],
+  p4:["Toast POS terminals","Kitchen Display Systems","Toast handhelds","Hardware sourcing","Menu &amp; modifier build","Installation &amp; staff training","Go-live and ongoing support"]
+};
+Object.keys(feats).forEach(function(k){
+  $(k).innerHTML = feats[k].map(function(f){ return "<li>"+tick+f+"</li>"; }).join("");
+});
+
+/* ───── testimonials ───── */
+var star='<svg viewBox="0 0 24 24"><path d="M12 2l3 6.3 6.9.9-5 4.8 1.2 6.9L12 17.6 5.9 20.9 7.1 14l-5-4.8 6.9-.9z"/></svg>';
+var qs = [
+  ["We're a new firm, so we don't have a wall of logos yet. What we do have is the arithmetic — pull up your DoorDash statement on the call and we'll work through your actual take rate line by line.","VB","Founding client program","Open now — limited onboarding slots","linear-gradient(140deg,#FF4A17,#FFA92E)"],
+  ["The rates in the calculator above aren't ours to spin. They're DoorDash's, Uber Eats' and Grubhub's own published tiers. Check them yourself before you talk to us.","VB","Published rates, not estimates","Verified against 2026 rate cards","linear-gradient(140deg,#4FA8FF,#8B6CFF)"],
+  ["Ask us for references and we'll connect you directly with the restaurants we're working with. No curated quotes, no screenshots — an actual phone number.","VB","References on request","Talk to our clients, not our marketing","linear-gradient(140deg,#8B6CFF,#FF4A17)"]
+];
+$("quotes").innerHTML = qs.map(function(q){
+  return '<figure class="glass lift tcard"><div class="stars" aria-label="5 out of 5">'+star.repeat(5)+'</div>'+
+    '<blockquote>“'+q[0]+'”</blockquote><figcaption class="tby"><span class="av" style="background:'+q[4]+'">'+q[1]+'</span>'+
+    '<span><span class="nm">'+q[2]+'</span><br><span class="rl">'+q[3]+'</span></span></figcaption></figure>';
+}).join("");
+
+/* ───── booking ───── */
+var DAYW=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+var SLOTS=["9:00 AM","10:00 AM","11:00 AM","1:00 PM","2:00 PM","3:00 PM","4:00 PM","5:00 PM","6:00 PM"];
+var selDay=0, selSlot=null, dayList=[];
+(function(){
+  var d = new Date(); var added=0;
+  while(dayList.length<7){
+    added++; var n = new Date(d.getTime()+added*864e5);
+    if(n.getDay()!==0) dayList.push(n);
+  }
+  $("days").innerHTML = dayList.map(function(n,i){
+    return '<button class="day'+(i?"":" on")+'" type="button"><span class="dw">'+DAYW[n.getDay()]+
+      '</span><span class="dd">'+n.getDate()+'</span></button>';
+  }).join("");
+  [].slice.call($("days").children).forEach(function(b,i){
+    b.onclick = function(){
+      selDay=i; selSlot=null;
+      [].slice.call($("days").children).forEach(function(x,j){ x.classList.toggle("on", i===j); });
+      renderSlots();
+    };
+  });
+})();
+function renderSlots(){
+  $("slots").innerHTML = SLOTS.map(function(s,i){
+    var gone = (selDay*3+i) % 7 === 0;
+    return '<button class="slot'+(gone?" gone":"")+(selSlot===s?" on":"")+'" type="button"'+(gone?' disabled':'')+'>'+s+'</button>';
+  }).join("");
+  [].slice.call($("slots").children).forEach(function(b){
+    b.onclick = function(){ selSlot = b.textContent; renderSlots(); };
+  });
+}
+renderSlots();
+
+/* ───── form → CRM ───── */
+$("leadForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  var rest=$("fRest").value.trim(), own=$("fOwner").value.trim(), em=$("fEmail").value.trim(), ph=$("fPhone").value.trim();
+  if(!rest||!own||!em||!ph){ toast("Fill in the four required fields"); return; }
+  if(!selSlot){ toast("Pick a demo time first"); return; }
+  var when = dayList[selDay];
+  var m = model();
+  /* TODO: POST to Supabase here — see the runbook, Step 5 */
+  var lead = ({
+    r:rest,o:own,e:em,p:ph,c:$("fCity").value||"—",addr:"—",pos:$("fPos").value,
+    oo:"From calculator: "+money(m.sales)+"/mo across the apps",
+    mo:Math.round(m.orders),at:Math.round(m.ticket),loc:1,rev:(+iSales.value||0)*12,
+    goal:"Reduce third-party commission",pain:$("fPain").value||"—",
+    mkt:+iMkt.value||0,ad:0,src:"Website demo form",s:"Demo Scheduled",d:Date.now(),
+    tl:[["Demo booked for "+DAYW[when.getDay()]+" "+when.getDate()+" at "+selSlot,0],["Lead submitted from booking form",0]],
+    n:[["Auto-captured from calculator: "+money(m.taken*12)+" a year taken by the apps at an effective "+(m.effRate*100).toFixed(1)+"% take rate.","System"]]
+  });
+  $("bookWrap").innerHTML =
+    '<div class="glass strong confirm" style="grid-column:1/-1">'+
+    '<div class="ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>'+
+    '<h3>You\'re booked, '+own.split(" ")[0]+'.</h3>'+
+    '<p class="lede" style="margin:var(--s4) auto 0;max-width:40ch">'+DAYW[when.getDay()]+' '+when.toLocaleDateString("en-US",{month:"long",day:"numeric"})+' at '+selSlot+' Eastern, 30 minutes, video call.</p>'+
+    '<ul class="nextsteps">'+
+      '<li><b>1</b><span>Confirmation email and calendar invite are on their way to '+em+'.</span></li>'+
+      '<li><b>2</b><span>We\'ll audit '+rest+'\'s site, Google listing and marketplace mix before we meet.</span></li>'+
+      '<li><b>3</b><span>You\'ll leave the call with a written number, whether or not you work with us.</span></li>'+
+    '</ul>'+
+    '<p class="tiny" style="margin-top:var(--s6)">A copy of the invite is on its way to your inbox.</p></div>';
+  toast("Demo booked");
+});
+
+/* ───── reveal ───── */
+var io = new IntersectionObserver(function(en){
+  en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add("reveal"); io.unobserve(x.target); } });
+}, {threshold:.1, rootMargin:"0px 0px -60px 0px"});
+document.querySelectorAll(".ob").forEach(function(e){ io.observe(e); });
+
+heroCalc(); fullCalc();
+})();
+</script>
+</body>
+</html>
